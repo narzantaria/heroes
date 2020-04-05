@@ -1,0 +1,24 @@
+{
+  "name": "dark",
+  "version": "1.0.0",
+  "description": "GraphQL Relay server",
+  "main": "index.js",
+  "repository": "https://github.com/narzantaria/heroes.git",
+  "author": "Nar Zantaria",
+  "license": "MIT",
+  "scripts": {
+    "serve": "nodemon index.js"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "graphql-relay": "^0.6.0",
+    "mongoose": "^5.9.7"
+  }
+}
