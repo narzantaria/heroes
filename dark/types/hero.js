@@ -8,13 +8,13 @@ const { nodeInterface } = require('../nodes');
 
 const Hero = new GraphQLObjectType({
   name: "Hero",
-  description: "lkjlkjlkjlkjlk",
+  description: "Hero type",
   interfaces: [nodeInterface],
   fields: () => ({
     id: globalIdField(),
     name: {
       type: GraphQLString,
-      description: "Name of Hero"
+      description: "Hero Name"
     },
     date: {
       type: GraphQLString,
