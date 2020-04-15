@@ -8,6 +8,10 @@ const heroSchema = new Schema({
     type: String,
     required: true
   },
+  skills: {
+    type: Array,
+    default: []
+  },
   date: {
     type: Date,
     default: Date.now
@@ -56,6 +60,7 @@ module.exports = {
       id,
       {
         name: args.name,
+        skills: args.skills,
         date: args.date
       },
       { new: true }

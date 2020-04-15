@@ -1,0 +1,191 @@
+input CreateHeroInput {
+  name: String!
+  skills: [String]
+  date: String!
+  clientMutationId: String
+}
+
+type CreateHeroPayload {
+  hero: Hero
+  clientMutationId: String
+}
+
+input CreateSkillInput {
+  name: String!
+  description: String!
+  date: String!
+  clientMutationId: String
+}
+
+type CreateSkillPayload {
+  skill: Skill
+  clientMutationId: String
+}
+
+"""Hero type"""
+type Hero implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """Hero Name"""
+  name: String
+
+  """Skills of Hero"""
+  skills: [String]
+
+  """Hero date of birth"""
+  date: String
+}
+
+"""A connection to a list of items."""
+type HeroConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [HeroEdge]
+}
+
+"""An edge in a connection."""
+type HeroEdge {
+  """The item at the end of the edge"""
+  node: Hero
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""Mutations"""
+type Mutation {
+  createHero(input: CreateHeroInput!): CreateHeroPayload
+  updateHero(input: UpdateHeroInput!): UpdateHeroPayload
+  removeHero(input: RemoveHeroInput!): RemoveHeroPayload
+  createSkill(input: CreateSkillInput!): CreateSkillPayload
+  updateSkill(input: UpdateSkillInput!): UpdateSkillPayload
+  removeSkill(input: RemoveSkillInput!): RemoveSkillPayload
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""Query interface for our app"""
+type Query {
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Query for docs"""
+  viewer: Viewer!
+}
+
+input RemoveHeroInput {
+  id: String!
+  clientMutationId: String
+}
+
+type RemoveHeroPayload {
+  deleted: Boolean
+  deletedId: String
+  clientMutationId: String
+}
+
+input RemoveSkillInput {
+  id: String!
+  clientMutationId: String
+}
+
+type RemoveSkillPayload {
+  deleted: Boolean
+  deletedId: String
+  clientMutationId: String
+}
+
+"""Skill type"""
+type Skill implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """Skill Name"""
+  name: String
+
+  """Skill's description"""
+  description: String
+
+  """Skill's date"""
+  date: String
+}
+
+"""A connection to a list of items."""
+type SkillConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [SkillEdge]
+}
+
+"""An edge in a connection."""
+type SkillEdge {
+  """The item at the end of the edge"""
+  node: Skill
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input UpdateHeroInput {
+  id: String!
+  name: String!
+  skills: [String]
+  date: String!
+  clientMutationId: String
+}
+
+type UpdateHeroPayload {
+  updated: Boolean
+  updatedId: String
+  clientMutationId: String
+}
+
+input UpdateSkillInput {
+  id: String!
+  name: String!
+  description: String!
+  date: String!
+  clientMutationId: String
+}
+
+type UpdateSkillPayload {
+  updated: Boolean
+  updatedId: String
+  clientMutationId: String
+}
+
+type Viewer {
+  Hero(id: ID): Hero
+  Skill(id: ID): Skill
+  Heroes(after: String, first: Int, before: String, last: Int): HeroConnection!
+  Skills(after: String, first: Int, before: String, last: Int): SkillConnection!
+  id: ID!
+}
+

@@ -1,4 +1,5 @@
 const {
+  GraphQLList,
   GraphQLObjectType,
   GraphQLString
 } = require('graphql');
@@ -15,6 +16,10 @@ const Hero = new GraphQLObjectType({
     name: {
       type: GraphQLString,
       description: "Hero Name"
+    },
+    skills: {
+      type: new GraphQLList(GraphQLString),
+      description: "Skills of Hero"
     },
     date: {
       type: GraphQLString,

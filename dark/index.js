@@ -18,7 +18,7 @@ let app = express();
 const cors = require('cors');
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(
   "/graphql",
@@ -43,8 +43,10 @@ mongoose.connect(
     useUnifiedTopology: true
   }
 ).then(() => {
-  console.log('Connection to database established...')
-  app.listen(process.env.APP_PORT);
+  console.log(`Connection to database ${process.env.MONGO_DB} established...`)
+  app.listen(process.env.APP_PORT, () => {
+    console.log(`Server started at port ${process.env.APP_PORT}`);
+  });
 }).catch(err => {
   console.log(err);
 });

@@ -12,18 +12,28 @@ const {
 
 const { nodeField } = require('./nodes');
 const { Hero, HeroConnection } = require('./types/hero');
+const { Skill, SkillConnection } = require('./types/skill');
 
 const heroModel = require('./models/hero');
+const skillModel = require('./models/skill');
 
 const Viewer = new GraphQLObjectType({
   name: "Viewer",
   fields: {
     Hero: {
       type: Hero,
-      args: {id: {type: GraphQLID}},
+      args: { id: { type: GraphQLID } },
       resolve: (_, args) => {
-        const {type,id} = fromGlobalId(args.id);
+        const { type, id } = fromGlobalId(args.id);
         return heroModel.getHero(id);
+      }
+    },
+    Skill: {
+      type: Skill,
+      args: { id: { type: GraphQLID } },
+      resolve: (_, args) => {
+        const { type, id } = fromGlobalId(args.id);
+        return skillModel.getSkill(id);
       }
     },
     Heroes: {
@@ -31,6 +41,12 @@ const Viewer = new GraphQLObjectType({
       args: connectionArgs,
       resolve: (_, args) =>
         connectionFromPromisedArray(heroModel.getHeroes(), args)
+    },
+    Skills: {
+      type: new GraphQLNonNull(SkillConnection),
+      args: connectionArgs,
+      resolve: (_, args) =>
+        connectionFromPromisedArray(skillModel.getSkills(), args)
     },
     id: {
       type: new GraphQLNonNull(GraphQLID),
@@ -42,7 +58,7 @@ const Viewer = new GraphQLObjectType({
 
 const Query = new GraphQLObjectType({
   name: "Query",
-  description: "Query interface for our blog",
+  description: "Query interface for our app",
   fields: {
     node: nodeField,
     viewer: {
