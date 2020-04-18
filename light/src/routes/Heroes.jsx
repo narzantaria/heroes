@@ -4,8 +4,19 @@ import { Button, Col, Row } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import Line from '../components/Line';
 
-class Heroes extends Component {
+import { QueryRenderer, graphql } from 'react-relay';
+import environment from '../Environment';
+import HeroesList from '../components/HeroesList';
 
+const HeroesQuery = graphql`
+  query HeroesQuery {
+    viewer {
+      ...HeroesList_viewer
+    }
+  }
+`;
+
+class Heroes extends Component {
   render() {
     return (
       <Fragment>
@@ -13,7 +24,19 @@ class Heroes extends Component {
         <Line />
         <Button type="primary">
           <PlusOutlined /> <Link to="/addhero">Add Hero</Link>
-        </Button>        
+        </Button>
+        <QueryRenderer
+          environment={environment}
+          query={HeroesQuery}
+          render={({ error, props }) => {
+            if (error) {
+              return <div>{error.message}</div>;
+            } else if (props) {
+              return <HeroesList viewer={props.viewer} />;
+            }
+            return <div>Загрузка данных...</div>
+          }}
+        />      
       </Fragment>
     );
   }
