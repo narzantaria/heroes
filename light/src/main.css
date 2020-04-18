@@ -13,8 +13,21 @@ body {}
   font-size: 25px;
   border: 1px solid #37250b;
 }
+button a {color: #fff !important;}
 #logo {max-width: 45px;}
 .ant-menu {background-color: transparent !important;}
-.ant-menu-item:hover, .ant-menu-item-selected {background-color: #37250b !important;}
+.ant-menu-item:hover,
+.ant-menu-submenu-title:hover,
+.ant-menu-item-selected {
+  background-color: #37250b !important;
+  color: #fffa9d;
+}
 .ant-menu-horizontal > .ant-menu-item-selected {border-bottom: 2px solid #fffa9d !important;}
+.ant-menu-item {background-color: sienna;}
+.ant-menu-submenu {color: #fffa9d !important;}
+.ant-menu-submenu > .ant-menu {background-color: sienna !important;}
+.ant-menu-item > a:hover, .ant-menu-item > a {
+  color: #fffa9d;
+}
+.ant-menu-submenu-open, .ant-menu-submenu-selected {border-bottom: 2px solid #fffa9d !important;}
 header a {color: #fffa9d !important;}

@@ -1,0 +1,36 @@
+query {
+  viewer {
+     Heroes{
+      edges {
+        node {
+          id
+          name
+          skills
+          date
+        }
+      }
+    }
+  }
+}
+
+mutation CreateHeroMutation($input: CreateHeroInput!) {
+  createHero(input: $input) {
+     hero{
+      id
+      name
+      skills
+      date
+    }
+  }
+}
+
+{
+  "input": {
+    "name": "Sandro",
+    "skills": [
+      "5e6b83e87ddb3319a0dd4c6e",
+      "5e6b83e97ddb3319a0dd4c72"
+    ],
+    "date": "2019-10-04T21:00:00.000Z"
+  }
+}

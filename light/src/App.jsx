@@ -5,6 +5,9 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Main from './routes/Main';
 import Heroes from './routes/Heroes';
 import Hero from './routes/Hero';
+import AddHero from './routes/AddHero';
+
+const { SubMenu } = Menu;
 
 function App() {
   return (
@@ -27,7 +30,13 @@ function App() {
               mode="horizontal"
               style={{ lineHeight: '64px', float: 'right' }}
             >
-              <Menu.Item key="1"><Link to="/heroes">Heroes</Link></Menu.Item>   
+              <SubMenu
+                key="sub1"
+                title="Heroes"
+              >
+                <Menu.Item key="1"><Link to="/heroes">Heroes List</Link></Menu.Item>
+                <Menu.Item key="2"><Link to="/addhero">Add Hero</Link></Menu.Item>  
+              </SubMenu>
             </Menu>
           </Col>
         </Row>
@@ -39,6 +48,7 @@ function App() {
               <Route path="/" exact component={Main} />
               <Route path="/heroes" exact component={Heroes} />
               <Route path="/heroes/:id" exact component={Hero} />
+              <Route path="/addhero" exact component={AddHero} />
             </Col>
           </Row>
         </div>
