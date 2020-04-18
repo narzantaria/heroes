@@ -1,0 +1,20 @@
+body {}
+.wrapper {padding: 25px 50px;}
+#up {
+  display: none;
+  padding: 10px;
+  background-color: 'sienna';
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  cursor: pointer;
+  line-height: 0;
+  font-size: 25px;
+  border: 1px solid #37250b;
+}
+#logo {max-width: 45px;}
+.ant-menu {background-color: transparent !important;}
+.ant-menu-item:hover, .ant-menu-item-selected {background-color: #37250b !important;}
+.ant-menu-horizontal > .ant-menu-item-selected {border-bottom: 2px solid #fffa9d !important;}
+header a {color: #fffa9d !important;}
