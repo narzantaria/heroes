@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import HeroTpl from './HeroTpl';
 
 import { createFragmentContainer, graphql } from 'react-relay';
 
 function HeroesList(props) {
   return (
-    <Fragment>
+    <div style={{ padding: '10px 0' }}>
       {props.viewer.Heroes.edges.map(({ node }) => (
         <HeroTpl key={node.__id} hero={node} />
       ))}
-    </Fragment>
+    </div>
   );
 }
 
@@ -27,5 +27,5 @@ export default createFragmentContainer(
         }
       }
     `
-  }
+}
 );

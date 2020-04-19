@@ -14,7 +14,7 @@ const mutation = graphql`
   }
 `;
 
-export default (name, skills, date) => {
+export default (name, skills, date) => new Promise((resolve, reject) => {
   commitMutation(
     environment,
     {
@@ -26,10 +26,11 @@ export default (name, skills, date) => {
           date
         }
       },
-      onCompleted: (response, errors) => {
-        console.log('Response received from server.');        
+      onCompleted: (res, err) => {
+        if (err) return reject(err);
+        return resolve(res.createHero.hero.id);
       },
-      onError: err => console.error(err),
+      onError: err => console.error(err)
     },
   );
-};
+});

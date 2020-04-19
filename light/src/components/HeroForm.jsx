@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { Button, Drawer, Form, Col, Row, Input, Select, DatePicker } from 'antd';
+// import moment from 'moment';
 
 const dateFormat = 'DD/MM/YYYY';
 
 class HeroForm extends Component {
   constructor(props) {
     super(props);
-    //
   }
 
   render() {
+    const { data } = this.props;
     return (
       <Form
         layout="vertical"
-        hideRequiredMark
+        initialValues={{ ...data }}
+        onFinish={values => {
+          this.props.sendbackData(values.name, [], new Date(values.date).toISOString())
+        }}
       >
         <Row gutter={16}>
           <Col span={24}>
@@ -24,15 +28,17 @@ class HeroForm extends Component {
             >
               <Input placeholder="Please enter hero name" />
             </Form.Item>
-            <Form.Item label="Hero birth date" >
+            <Form.Item label="Hero birth date" name="date">
               <DatePicker
-                name='birth'
-                size='medium'
+                size="medium"
                 format={dateFormat}
                 placeholder="Hero birth date"
               />
             </Form.Item>
-            <Button onClick={() => { this.props.parentCallback('qwerty') }}>OK</Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+            >OK</Button>
           </Col>
         </Row>
       </Form>
