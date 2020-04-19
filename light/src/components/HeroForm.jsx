@@ -8,10 +8,13 @@ class HeroForm extends Component {
     super(props);
     //
   }
-  
+
   render() {
     return (
-      <Form layout="vertical" hideRequiredMark>
+      <Form
+        layout="vertical"
+        hideRequiredMark
+      >
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
@@ -29,7 +32,7 @@ class HeroForm extends Component {
                 placeholder="Hero birth date"
               />
             </Form.Item>
-            <Button onClick={this.props.clicker}>OK</Button>
+            <Button onClick={() => { this.props.parentCallback('qwerty') }}>OK</Button>
           </Col>
         </Row>
       </Form>
