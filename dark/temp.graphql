@@ -34,3 +34,45 @@ mutation CreateHeroMutation($input: CreateHeroInput!) {
     "date": "2019-10-04T21:00:00.000Z"
   }
 }
+
+mutation UpdateHeroMutation($input: UpdateHeroInput!) {
+  updateHero(input: $input) {
+    updatedId
+  }
+}
+
+{
+  "input": {
+    "id": "SGVybzo1ZTlkM2IwOTViMzc1YzE1MTg1OWNhNzI=",
+    "name": "Finneas Vilmar",
+    "skills": [],
+    "date": "2019-10-04T21:00:00.000Z"
+  }
+}
+
+query HeroQuery($id: ID!) {
+  viewer {
+    Hero(id: $id) {
+      id
+      name
+      skills
+      date
+    }
+  }
+}
+
+{
+  "id": "SGVybzo1ZTlkNDJhMDViMzc1YzE1MTg1OWNhNzM="
+}
+
+mutation RemoveHeroMutation($input: RemoveHeroInput!) {
+  removeHero(input: $input) {
+    deletedId
+  }
+}
+
+{
+  "input": {
+    "id": "SGVybzo1ZTlkNWRlOTVjNmQ0ODE0ZThlMTUxYmY="
+  }
+}

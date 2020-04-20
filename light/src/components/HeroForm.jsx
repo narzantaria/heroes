@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Drawer, Form, Col, Row, Input, Select, DatePicker } from 'antd';
-// import moment from 'moment';
+import moment from 'moment';
 
 const dateFormat = 'DD/MM/YYYY';
 
@@ -14,7 +14,10 @@ class HeroForm extends Component {
     return (
       <Form
         layout="vertical"
-        initialValues={{ ...data }}
+        initialValues={{ 
+          ...data,
+          date: data ? moment(new Date(data.date), dateFormat) : ''
+        }}
         onFinish={values => {
           this.props.sendbackData(values.name, [], new Date(values.date).toISOString())
         }}

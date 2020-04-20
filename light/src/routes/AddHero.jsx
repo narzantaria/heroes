@@ -15,7 +15,10 @@ class AddHero extends Component {
         <Line />
         <HeroForm sendbackData={(name, skills, date) => {
           CreateHeroMutation(name, skills, date)
-            .then(arg => console.log(arg));
+            .then(arg => {
+              console.log(arg);
+              this.props.history.push("/heroes/" + arg, { params: 'Shutruk-Nahhunte!!!' });
+            });
         }} />
       </div>
     );
