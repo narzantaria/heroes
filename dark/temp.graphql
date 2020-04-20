@@ -76,3 +76,55 @@ mutation RemoveHeroMutation($input: RemoveHeroInput!) {
     "id": "SGVybzo1ZTlkNWRlOTVjNmQ0ODE0ZThlMTUxYmY="
   }
 }
+
+# #######################################################
+query {
+  viewer {
+    Skills {
+      edges {
+        node {
+          id
+          name
+          description
+          date
+        }
+      }
+    }
+  }
+}
+
+mutation CreateSkillMutation($input: CreateSkillInput!) {
+  createSkill(input: $input) {
+    skill {
+      id
+      name
+      description
+      date
+    }
+  }
+}
+
+{
+  "input": {
+    "name": "khkhkjhkj",
+    "description": "hghgfdhgfdhgfdhg",
+    "date": "2019-10-04T21:00:00.000Z"
+  }
+}
+
+# ВАЖНО ВАЖНО ВАЖНО!!! ЭТО ОБНОВЛЕНИЕ СПИСКА СКИЛЛОВ
+# operation 0 добавляет, 1 - удаляет
+mutation UpdateHeroSkillsMutation($input: UpdateHeroSkillsInput!) {
+  updateSkills(input: $input) {
+    updatedId
+  }
+}
+
+{
+  "input": {
+    "id": "SGVybzo1ZTliNDVkMmY0YzRjNzA1MTQyZGM0OWY=",
+    "operation": "0",
+    "skill": "hgfhgfhgfhg"
+  }
+}
+

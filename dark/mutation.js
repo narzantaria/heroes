@@ -2,6 +2,7 @@ const {
   GraphQLList,
   GraphQLObjectType,
   GraphQLNonNull,
+  GraphQLScalarType,
   GraphQLString,
   GraphQLBoolean
 } = require('graphql');
@@ -42,9 +43,9 @@ const UpdateHeroMutation = mutationWithClientMutationId({
   name: "UpdateHero",
   inputFields: {
     id: { type: new GraphQLNonNull(GraphQLString) },
-    name: { type: new GraphQLNonNull(GraphQLString) },
+    name: { type: GraphQLString },
     skills: { type: new GraphQLList(GraphQLString) },
-    date: { type: new GraphQLNonNull(GraphQLString) }
+    date: { type: GraphQLString }
   },
   outputFields: {
     updated: { type: GraphQLBoolean },
@@ -53,6 +54,24 @@ const UpdateHeroMutation = mutationWithClientMutationId({
   mutateAndGetPayload: async (args) => {
     const { id: productId } = fromGlobalId(args.id);
     const result = await heroModel.updateHero(productId, args);
+    return { updatedId: args.id, updated: true };
+  }
+});
+
+const UpdateHeroSkillsMutation = mutationWithClientMutationId({
+  name: "UpdateHeroSkills",
+  inputFields: {
+    id: { type: new GraphQLNonNull(GraphQLString) },
+    operation: { type: new GraphQLNonNull(GraphQLString) },
+    skill: { type: new GraphQLNonNull(GraphQLString) }
+  },
+  outputFields: {
+    updated: { type: GraphQLBoolean },
+    updatedId: { type: GraphQLString }
+  },
+  mutateAndGetPayload: async (args) => {
+    const { id: productId } = fromGlobalId(args.id);
+    const result = await heroModel.updateSkills(productId, args);
     return { updatedId: args.id, updated: true };
   }
 });
@@ -142,7 +161,8 @@ const Mutation = new GraphQLObjectType({
     removeHero: RemoveHeroMutation,    
     createSkill: CreateSkillMutation,
     updateSkill: UpdateSkillMutation,
-    removeSkill: RemoveSkillMutation
+    removeSkill: RemoveSkillMutation,
+    updateSkills: UpdateHeroSkillsMutation
   }
 });
 

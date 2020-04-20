@@ -65,5 +65,19 @@ module.exports = {
       },
       { new: true }
     );
+  },
+  updateSkills: (id, args) => {
+    return heroModel.findOne({ _id: id }, (err, hero) => {
+      if(args.operation == "0") {
+        hero.skills.push(args.skill)
+      } else {
+        hero.skills = hero.skills.filter(val => val != args.skill);
+      }
+      hero.save(err => {
+        if(err) {
+          console.log("Error");
+        }
+      });
+    });
   }
 };
