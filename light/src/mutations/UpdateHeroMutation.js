@@ -24,7 +24,7 @@ export default (id, name, skills, date) => new Promise((resolve, reject) => {
       },
       onCompleted: (res, err) => {
         if (err) return reject(err);
-        // return resolve(res.createHero.hero.id);
+        return resolve("Updated");
       },
       onError: err => console.error(err)
     },

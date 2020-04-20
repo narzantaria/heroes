@@ -41,7 +41,7 @@ class HeroForm extends Component {
             <Button
               type="primary"
               htmlType="submit"
-            >OK</Button>
+            >Save</Button>
           </Col>
         </Row>
       </Form>

@@ -3,22 +3,17 @@ import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { createFragmentContainer, graphql } from 'react-relay';
 import { DeleteOutlined } from '@ant-design/icons';
-import Spinner from './Spinner';
 
 import RemoveHeroMutation from '../mutations/RemoveHeroMutation';
 
 class HeroTpl extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      spin: false
-    };
   }
 
   render() {
     return (
       <Fragment>
-        {this.state.spin ? <Spinner /> : ''}
         <Row className="line">
           <Col span={12}>
             <Link to={`/heroes/${this.props.hero.id}`}>
@@ -30,10 +25,10 @@ class HeroTpl extends Component {
             <DeleteOutlined
               className="delete"
               onClick={() => {
-                this.setState({ spin: true });
+                this.props.callUp(true);
                 RemoveHeroMutation(this.props.hero.id)
                   .then(() => {
-                    this.setState({ spin: false });
+                    this.props.callUp(false);
                     window.location.reload();
                   });
               }}

@@ -31,7 +31,7 @@ class Hero extends Component {
       this.setState({ alert: true });
       setTimeout(() => {
         this.setState({ alert: false });
-      }, 3000);
+      }, 2000);
     }
   }
 
@@ -55,9 +55,12 @@ class Hero extends Component {
                 <Line />
                 {this.state.alert ? <Alert style={{ margin: '10px 0' }} message="Data saved successfully" type="success" /> : ''}
                 <HeroForm data={hero} sendbackData={(name, skills, date) => {
+                  this.setState({ alert: true });
                   UpdateHeroMutation(this.props.match.params.id, name, skills, date)
                     .then(() => {
-                      console.log('arg');
+                      setTimeout(() => {
+                        this.setState({ alert: false });
+                      }, 2000); 
                     });
                 }} />
               </Fragment>
