@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f5e46662905af7f5aed0d96643d6cb02
+ * @relayHash 9b3bb194864c8d40bbd82966851d25a7
  */
 
 /* eslint-disable */
@@ -9,33 +9,32 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type UpdateHeroInput = {|
+export type UpdateHeroSkillsInput = {|
   id: string,
-  name?: ?string,
-  skills?: ?$ReadOnlyArray<?string>,
-  date?: ?string,
+  operation: string,
+  skill: string,
   clientMutationId?: ?string,
 |};
-export type UpdateHeroMutationVariables = {|
-  input: UpdateHeroInput
+export type UpdateHeroSkillsMutationVariables = {|
+  input: UpdateHeroSkillsInput
 |};
-export type UpdateHeroMutationResponse = {|
-  +updateHero: ?{|
+export type UpdateHeroSkillsMutationResponse = {|
+  +updateSkills: ?{|
     +updatedId: ?string
   |}
 |};
-export type UpdateHeroMutation = {|
-  variables: UpdateHeroMutationVariables,
-  response: UpdateHeroMutationResponse,
+export type UpdateHeroSkillsMutation = {|
+  variables: UpdateHeroSkillsMutationVariables,
+  response: UpdateHeroSkillsMutationResponse,
 |};
 */
 
 
 /*
-mutation UpdateHeroMutation(
-  $input: UpdateHeroInput!
+mutation UpdateHeroSkillsMutation(
+  $input: UpdateHeroSkillsInput!
 ) {
-  updateHero(input: $input) {
+  updateSkills(input: $input) {
     updatedId
   }
 }
@@ -46,7 +45,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "UpdateHeroInput!",
+    "type": "UpdateHeroSkillsInput!",
     "defaultValue": null
   }
 ],
@@ -54,7 +53,7 @@ v1 = [
   {
     "kind": "LinkedField",
     "alias": null,
-    "name": "updateHero",
+    "name": "updateSkills",
     "storageKey": null,
     "args": [
       {
@@ -63,7 +62,7 @@ v1 = [
         "variableName": "input"
       }
     ],
-    "concreteType": "UpdateHeroPayload",
+    "concreteType": "UpdateHeroSkillsPayload",
     "plural": false,
     "selections": [
       {
@@ -80,7 +79,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "UpdateHeroMutation",
+    "name": "UpdateHeroSkillsMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -88,20 +87,20 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UpdateHeroMutation",
+    "name": "UpdateHeroSkillsMutation",
     "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "mutation",
-    "name": "UpdateHeroMutation",
+    "name": "UpdateHeroSkillsMutation",
     "id": null,
-    "text": "mutation UpdateHeroMutation(\n  $input: UpdateHeroInput!\n) {\n  updateHero(input: $input) {\n    updatedId\n  }\n}\n",
+    "text": "mutation UpdateHeroSkillsMutation(\n  $input: UpdateHeroSkillsInput!\n) {\n  updateSkills(input: $input) {\n    updatedId\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'e6954a03fe8258cda96f00fba149f454';
+(node/*: any*/).hash = '82fafd3931b64afb118419f335d4139d';
 
 module.exports = node;

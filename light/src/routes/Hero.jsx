@@ -11,6 +11,7 @@ import UpdateHeroSkillsMutation from '../mutations/UpdateHeroSkillsMutation';
 
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../Environment';
+import Skills from '../components/Skills';
 
 const HeroQuery = graphql`
   query HeroQuery($id: ID!) {
@@ -106,6 +107,7 @@ class Hero extends Component {
                         }, 2000);
                       });
                   }} />
+                  {hero.skills.length > 0 ? <Skills skills={hero.skills} /> : ''}
                 </Fragment>
               );
             }

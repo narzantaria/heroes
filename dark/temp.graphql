@@ -149,20 +149,12 @@ query SkillQuery($id: ID!) {
   "id": "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh"
 }
 
-query HeroQuery($id: ID!) {
-  node(id: $id) {
+query HeroSkillsQuery ($input: [ID!]!) {
+  nodes (ids: $input) {
     id
-    ... on Hero {
+    ... on Skill {
       id
       name
-    }
-  }
-}
-
-query HeroSkillsQuery($input: [String]!) {
-  viewer {
-    HeroSkills(ids: $input) {
-      id
     }
   }
 }
@@ -170,7 +162,6 @@ query HeroSkillsQuery($input: [String]!) {
 {
   "input": [
     "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh",
-    "U2tpbGw6NWU5ZGQwOTlmMjA5NDgxNWFjM2YzNTE5",
-    "U2tpbGw6NWU5ZGQwNzVmMjA5NDgxNWFjM2YzNTE4"
+    "U2tpbGw6NWU5ZGQwOTlmMjA5NDgxNWFjM2YzNTE5"
   ]
 }
