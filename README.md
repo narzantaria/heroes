@@ -13,3 +13,5 @@ First, we can create a *Hero*, then add some *skills*. We can create the *Hero* 
 When we remove the *Hero*, all it's *skills* shoild be removed automatically. *Hero* model has the *skills* field with array of IDs.
 
 At this stage, "Heroes" project has two models with *create*, *read*, *update* and *delete* functionality and with *relation* between that models.
+
+# Есть проблема с *UpdateHeroSkillsMutation*

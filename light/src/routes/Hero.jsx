@@ -72,7 +72,7 @@ class Hero extends Component {
           <SkillForm sendbackData={(name, description, date) => {
             this.setState({ spin: true });
             CreateSkillMutation(name, description, date)
-              .then(arg => {
+              .then(arg => {                
                 UpdateHeroSkillsMutation(this.props.match.params.id, "0", arg)
                   .then(() => {
                     setTimeout(() => {
