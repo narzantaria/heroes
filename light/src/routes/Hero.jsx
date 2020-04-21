@@ -7,6 +7,7 @@ import HeroForm from '../components/HeroForm';
 import SkillForm from '../components/SkillForm';
 import UpdateHeroMutation from '../mutations/UpdateHeroMutation';
 import CreateSkillMutation from '../mutations/CreateSkillMutation';
+import UpdateHeroSkillsMutation from '../mutations/UpdateHeroSkillsMutation';
 
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../Environment';
@@ -71,10 +72,12 @@ class Hero extends Component {
             this.setState({ spin: true });
             CreateSkillMutation(name, description, date)
               .then(arg => {
-                // console.log(arg);
-                setTimeout(() => {
-                  this.setState({ spin: false, visible: false });
-                }, 1000);
+                UpdateHeroSkillsMutation(this.props.match.params.id, "0", arg)
+                  .then(() => {
+                    setTimeout(() => {
+                      this.setState({ spin: false, visible: false });
+                    }, 1000);
+                  });
               });
           }} />
         </Drawer>

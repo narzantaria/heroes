@@ -23,8 +23,8 @@ var skillModel = mongoose.model("Skill", skillSchema);
 module.exports = {
   getSkills: () => {
     return skillModel.find({}).limit(10).sort({ _id: -1 })
-      .then(skilles => {
-        return skilles.map(skill => {
+      .then(skills => {
+        return skills.map(skill => {
           return {
             ...skill._doc,
             id: skill.id,
@@ -65,5 +65,20 @@ module.exports = {
       },
       { new: true }
     );
+  },
+  getHeroSkills: args => {
+    return skillModel.find({ '_id': args })
+      .then(skills => {
+        return skills.map(skill => {
+          return {
+            ...skill._doc,
+            id: skill.id,
+            date: new Date(skill.date).toLocaleDateString()
+          };
+        });
+      })
+      .catch(err => {
+        throw err;
+      });
   }
 };

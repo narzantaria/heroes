@@ -1,7 +1,9 @@
 const {
   GraphQLObjectType,
   GraphQLNonNull,
-  GraphQLID
+  GraphQLID,
+  GraphQLList,
+  GraphQLString
 } = require('graphql');
 
 const {
@@ -10,7 +12,7 @@ const {
   fromGlobalId
 } = require('graphql-relay');
 
-const { nodeField } = require('./nodes');
+const { nodeInterface, nodeField, nodesField } = require('./nodes');
 const { Hero, HeroConnection } = require('./types/hero');
 const { Skill, SkillConnection } = require('./types/skill');
 
@@ -48,6 +50,17 @@ const Viewer = new GraphQLObjectType({
       resolve: (_, args) =>
         connectionFromPromisedArray(skillModel.getSkills(), args)
     },
+    HeroSkills: {
+      type: Skill,
+      args: { ids: { type: new GraphQLList(GraphQLString) } },
+      resolve: (_, args) => {
+        let ids = [];
+        for (var i = 0; i < args.ids.length; i++) {
+          ids.push(fromGlobalId(args.ids[i]).id);
+        }
+        return skillModel.getHeroSkills(ids);
+      }
+    },
     id: {
       type: new GraphQLNonNull(GraphQLID),
       args: {},
@@ -60,7 +73,8 @@ const Query = new GraphQLObjectType({
   name: "Query",
   description: "Query interface for our app",
   fields: {
-    node: nodeField,
+    // node: nodeField,
+    node: nodesField,
     viewer: {
       name: "Viewer",
       description: "Query for docs",

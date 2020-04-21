@@ -71,9 +71,14 @@ mutation RemoveHeroMutation($input: RemoveHeroInput!) {
   }
 }
 
-{
-  "input": {
-    "id": "SGVybzo1ZTlkNWRlOTVjNmQ0ODE0ZThlMTUxYmY="
+query HeroQuery($id: ID!) {
+  viewer {
+    Hero(id: $id) {
+      id
+      name
+      skills
+      date
+    }
   }
 }
 
@@ -128,3 +133,44 @@ mutation UpdateHeroSkillsMutation($input: UpdateHeroSkillsInput!) {
   }
 }
 
+# =======================================================
+query SkillQuery($id: ID!) {
+  viewer {
+    Skill(id: $id) {
+      id
+      name
+      description
+      date
+    }
+  }
+}
+
+{
+  "id": "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh"
+}
+
+query HeroQuery($id: ID!) {
+  node(id: $id) {
+    id
+    ... on Hero {
+      id
+      name
+    }
+  }
+}
+
+query HeroSkillsQuery($input: [String]!) {
+  viewer {
+    HeroSkills(ids: $input) {
+      id
+    }
+  }
+}
+
+{
+  "input": [
+    "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh",
+    "U2tpbGw6NWU5ZGQwOTlmMjA5NDgxNWFjM2YzNTE5",
+    "U2tpbGw6NWU5ZGQwNzVmMjA5NDgxNWFjM2YzNTE4"
+  ]
+}
