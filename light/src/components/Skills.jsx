@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { Collapse } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
+import UpdateHeroSkillsMutation from '../mutations/UpdateHeroSkillsMutation';
+import RemoveSkillMutation from '../mutations/RemoveSkillMutation';
 
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../Environment';
+
+const { Panel } = Collapse;
 
 const SkillsQuery = graphql`
   query SkillsQuery ($input: [ID!]!) {
@@ -10,10 +16,25 @@ const SkillsQuery = graphql`
       ... on Skill {
         id
         name
+        description
       }
     }
   }
 `;
+
+const genExtra = (hero, skill) => (
+  <CloseCircleOutlined
+    onClick={event => {
+      event.stopPropagation();
+      UpdateHeroSkillsMutation(hero, "1", skill)
+        .then(() => {
+          RemoveSkillMutation(skill).then(() => {
+            window.location.reload();
+          });
+        });
+    }}
+  />
+);
 
 class Skills extends Component {
   constructor(props) {
@@ -24,7 +45,7 @@ class Skills extends Component {
     console.log(this.props);
     return (
       <div>
-        <hr/>
+        <br />
         <h1>Skills</h1>
         <QueryRenderer
           environment={environment}
@@ -37,12 +58,13 @@ class Skills extends Component {
               return <div>{error.message}</div>;
             } else if (props) {
               console.log(props);
-              return <div>                
+              return <Collapse style={{ marginBottom: '25px' }}>
                 {props.nodes.map(skill => (
-                  <h3>{skill.name}</h3>
+                  <Panel header={skill.name} key={skill.id} extra={genExtra(this.props.heroId, skill.id)}>
+                    <p>{skill.description}</p>
+                  </Panel>
                 ))}
-                <h1 style={{ color: 'firebrick' }}>Теперь надо поработать над UI</h1>
-              </div>;
+              </Collapse>;
             }
             return <div>Loading</div>;
           }}

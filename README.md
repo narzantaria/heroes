@@ -14,4 +14,8 @@ When we remove the *Hero*, all it's *skills* shoild be removed automatically. *H
 
 At this stage, "Heroes" project has two models with *create*, *read*, *update* and *delete* functionality and with *relation* between that models.
 
-# Есть проблема с *UpdateHeroSkillsMutation*
+# При удалении Hero должны удаляться все его Skill (надо сделать)
+# Также надо сделать обновелие Skill
+
+## Что уже есть: 
+При создании скилла и удалении обновляется "Hero" (добавляется/удаляется ИД в массив skills)

@@ -72,11 +72,12 @@ class Hero extends Component {
           <SkillForm sendbackData={(name, description, date) => {
             this.setState({ spin: true });
             CreateSkillMutation(name, description, date)
-              .then(arg => {                
+              .then(arg => {
                 UpdateHeroSkillsMutation(this.props.match.params.id, "0", arg)
                   .then(() => {
                     setTimeout(() => {
                       this.setState({ spin: false, visible: false });
+                      window.location.reload();
                     }, 1000);
                   });
               });
@@ -107,14 +108,13 @@ class Hero extends Component {
                         }, 2000);
                       });
                   }} />
-                  {hero.skills.length > 0 ? <Skills skills={hero.skills} /> : ''}
+                  {hero.skills.length > 0 ? <Skills heroId={this.props.match.params.id} skills={hero.skills} /> : <hr style={{ margin: '20px 0' }} />}
                 </Fragment>
               );
             }
             return <div>Ожидание...</div>
           }}
-        />
-        <hr style={{ margin: '20px 0' }} />
+        />        
         <Button type="primary" onClick={this.showDrawer}>
           <PlusOutlined /> New skill
         </Button>

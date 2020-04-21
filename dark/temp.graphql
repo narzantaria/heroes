@@ -127,9 +127,9 @@ mutation UpdateHeroSkillsMutation($input: UpdateHeroSkillsInput!) {
 
 {
   "input": {
-    "id": "SGVybzo1ZTliNDVkMmY0YzRjNzA1MTQyZGM0OWY=",
+    "id": "SGVybzo1ZTlmNGU5NTY1YmY2NDZlZGM2MDllZTY=",
     "operation": "0",
-    "skill": "hgfhgfhgfhg"
+    "skill": "U2tpbGw6NWU5ZjRlYTE2NWJmNjQ2ZWRjNjA5ZWU3"
   }
 }
 
@@ -164,4 +164,10 @@ query HeroSkillsQuery ($input: [ID!]!) {
     "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh",
     "U2tpbGw6NWU5ZGQwOTlmMjA5NDgxNWFjM2YzNTE5"
   ]
+}
+
+mutation RemoveSkillMutation($input: RemoveSkillInput!) {
+  removeSkill(input: $input) {
+    deletedId
+  }
 }
