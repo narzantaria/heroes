@@ -55,6 +55,9 @@ module.exports = {
   removeSkill: id => {
     return skillModel.findByIdAndRemove(id);
   },
+  removeSkills: args => {
+    return skillModel.remove({ '_id': { $in: args } });
+  },
   updateSkill: (id, args) => {
     return skillModel.findByIdAndUpdate(
       id,

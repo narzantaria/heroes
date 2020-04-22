@@ -76,6 +76,23 @@ const UpdateHeroSkillsMutation = mutationWithClientMutationId({
   }
 });
 
+const RemoveSkillsMutation = mutationWithClientMutationId({
+  name: 'RemoveSkillsMutation',
+  inputFields: {
+    ids: { type: new GraphQLList(GraphQLString) }
+  },
+  outputFields: {
+    deletedIDs: {
+      type: GraphQLList(GraphQLString),
+    }
+  },
+  mutateAndGetPayload: async args => {
+    const ids = args.ids.map(id => fromGlobalId(id).id);
+    await skillModel.removeSkills(ids);
+    return { deletedIDs: ids };
+  }
+});
+
 const RemoveHeroMutation = mutationWithClientMutationId({
   name: "RemoveHero",
   inputFields: {
@@ -158,11 +175,12 @@ const Mutation = new GraphQLObjectType({
   fields: {
     createHero: CreateHeroMutation,
     updateHero: UpdateHeroMutation,
-    removeHero: RemoveHeroMutation,    
+    removeHero: RemoveHeroMutation,
     createSkill: CreateSkillMutation,
     updateSkill: UpdateSkillMutation,
     removeSkill: RemoveSkillMutation,
-    updateSkills: UpdateHeroSkillsMutation
+    updateSkills: UpdateHeroSkillsMutation,
+    removeSkills: RemoveSkillsMutation
   }
 });
 

@@ -149,23 +149,6 @@ query SkillQuery($id: ID!) {
   "id": "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh"
 }
 
-query HeroSkillsQuery ($input: [ID!]!) {
-  nodes (ids: $input) {
-    id
-    ... on Skill {
-      id
-      name
-    }
-  }
-}
-
-{
-  "input": [
-    "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh",
-    "U2tpbGw6NWU5ZGQwOTlmMjA5NDgxNWFjM2YzNTE5"
-  ]
-}
-
 mutation RemoveSkillMutation($input: RemoveSkillInput!) {
   removeSkill(input: $input) {
     deletedId
