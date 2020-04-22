@@ -16,10 +16,10 @@ The server is configured with Mongodb cloud connection, so you can configure you
 
 # Used technologies
 
-![nodejs](img/node.png)
-![express](img/express.png)
-![graphql](img/graphql.png)
-![relay](img/relay.png)
-![react](img/react.png)
-![mongodb](img/mongodb.png)
-![antd](img/antd.png)
+![nodejs](light/img/node.png)
+![express](light/img/express.png)
+![graphql](light/img/graphql.png)
+![relay](light/img/relay.png)
+![react](light/img/react.png)
+![mongodb](light/img/mongodb.png)
+![antd](light/img/antd.png)
