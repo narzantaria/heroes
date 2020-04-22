@@ -6,7 +6,7 @@ Full-stack GraphQL app based on Node, Express, React, Relay, MongoDB
 ### Hero
 ### Skill
 
-A Hero may have many skills (or nothing))
+A Hero may have many skills (or nothing)
 
 Allowed operations: create, read, update, delete
 
