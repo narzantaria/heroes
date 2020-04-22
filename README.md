@@ -17,9 +17,9 @@ The server is configured with Mongodb cloud connection, so you can configure you
 # Used technologies
 
 <img src="/light/src/img/node.png" alt="Node.js" height="100" width="100">
-![express](light/src/img/express.png=24x48)
-![graphql](light/src/img/graphql.png)
-![relay](light/src/img/relay.png)
-![react](light/src/img/react.png)
-![mongodb](light/src/img/mongodb.png)
-![antd](light/src/img/antd.png)
+<img src="/light/src/img/express.png" alt="Express.js" height="100" width="100">
+<img src="/light/src/img/graphql.png" alt="GraphQL" height="100" width="100">
+<img src="/light/src/img/relay.png" alt="Relay.js" height="100" width="100">
+<img src="/light/src/img/react.png" alt="React.js" height="100" width="100">
+<img src="/light/src/img/mongodb.png" alt="MongoDB" height="100" width="100">
+<img src="/light/src/img/antd.png" alt="Ant design" height="100" width="100">
