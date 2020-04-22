@@ -16,7 +16,7 @@ The server is configured with Mongodb cloud connection, so you can configure you
 
 # Used technologies
 
-![nodejs](light/src/img/node.png=24x48)
+<img src="/light/src/img/node.png" alt="Node.js" height="100" width="100">
 ![express](light/src/img/express.png=24x48)
 ![graphql](light/src/img/graphql.png)
 ![relay](light/src/img/relay.png)
