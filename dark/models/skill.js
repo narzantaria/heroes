@@ -68,20 +68,20 @@ module.exports = {
       },
       { new: true }
     );
-  },
-  getHeroSkills: args => {
-    return skillModel.find({ '_id': args })
-      .then(skills => {
-        return skills.map(skill => {
-          return {
-            ...skill._doc,
-            id: skill.id,
-            date: new Date(skill.date).toLocaleDateString()
-          };
-        });
-      })
-      .catch(err => {
-        throw err;
-      });
   }
+  // getHeroSkills: args => {
+  //   return skillModel.find({ '_id': args })
+  //     .then(skills => {
+  //       return skills.map(skill => {
+  //         return {
+  //           ...skill._doc,
+  //           id: skill.id,
+  //           date: new Date(skill.date).toLocaleDateString()
+  //         };
+  //       });
+  //     })
+  //     .catch(err => {
+  //       throw err;
+  //     });
+  // }
 };

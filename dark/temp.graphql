@@ -154,3 +154,25 @@ mutation RemoveSkillMutation($input: RemoveSkillInput!) {
     deletedId
   }
 }
+
+{
+  "input": {
+    "id": "U2tpbGw6NWU5ZmZiMjIzNTY3MzEwZDg0ODFmNzM3"
+  }
+}
+
+# =======================================================
+mutation RemoveSkillsMutation($input: RemoveSkillsMutationInput!) {
+  removeSkills(input: $input) {
+    deletedIDs
+  }
+}
+
+{
+  "input": {
+    "ids": [
+      "U2tpbGw6NWU5ZjRlYTE2NWJmNjQ2ZWRjNjA5ZWU3",
+      "U2tpbGw6NWU5ZmZiMTAzNTY3MzEwZDg0ODFmNzM2"
+    ]
+  }
+}

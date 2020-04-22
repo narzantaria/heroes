@@ -64,6 +64,7 @@ type Mutation {
   updateSkill(input: UpdateSkillInput!): UpdateSkillPayload
   removeSkill(input: RemoveSkillInput!): RemoveSkillPayload
   updateSkills(input: UpdateHeroSkillsInput!): UpdateHeroSkillsPayload
+  removeSkills(input: RemoveSkillsMutationInput!): RemoveSkillsMutationPayload
 }
 
 """An object with an ID"""
@@ -124,6 +125,16 @@ input RemoveSkillInput {
 type RemoveSkillPayload {
   deleted: Boolean
   deletedId: String
+  clientMutationId: String
+}
+
+input RemoveSkillsMutationInput {
+  ids: [String]
+  clientMutationId: String
+}
+
+type RemoveSkillsMutationPayload {
+  deletedIDs: [String]
   clientMutationId: String
 }
 

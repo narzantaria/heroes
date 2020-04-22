@@ -5,6 +5,7 @@ import { createFragmentContainer, graphql } from 'react-relay';
 import { DeleteOutlined } from '@ant-design/icons';
 
 import RemoveHeroMutation from '../mutations/RemoveHeroMutation';
+import RemoveSkillsMutation from '../mutations/RemoveSkillsMutation';
 
 class HeroTpl extends Component {
   constructor(props) {
@@ -28,8 +29,11 @@ class HeroTpl extends Component {
                 this.props.callUp(true);
                 RemoveHeroMutation(this.props.hero.id)
                   .then(() => {
-                    this.props.callUp(false);
-                    window.location.reload();
+                    RemoveSkillsMutation(this.props.hero.skills)
+                      .then(() => {
+                        this.props.callUp(false);
+                        window.location.reload();
+                      });
                   });
               }}
             />

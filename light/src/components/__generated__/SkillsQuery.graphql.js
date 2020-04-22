@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 98ca374a24818dd9b944cf46896188d9
+ * @relayHash 5808068fc04347993ba5f3a262d3563d
  */
 
 /* eslint-disable */
@@ -17,6 +17,7 @@ export type SkillsQueryResponse = {|
     +id: string,
     +name?: ?string,
     +description?: ?string,
+    +date?: ?string,
   |}>
 |};
 export type SkillsQuery = {|
@@ -37,6 +38,7 @@ query SkillsQuery(
       id
       name
       description
+      date
     }
   }
 }
@@ -80,6 +82,13 @@ v3 = {
       "kind": "ScalarField",
       "alias": null,
       "name": "description",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "date",
       "args": null,
       "storageKey": null
     }
@@ -140,12 +149,12 @@ return {
     "operationKind": "query",
     "name": "SkillsQuery",
     "id": null,
-    "text": "query SkillsQuery(\n  $input: [ID!]!\n) {\n  nodes(ids: $input) {\n    __typename\n    id\n    ... on Skill {\n      id\n      name\n      description\n    }\n  }\n}\n",
+    "text": "query SkillsQuery(\n  $input: [ID!]!\n) {\n  nodes(ids: $input) {\n    __typename\n    id\n    ... on Skill {\n      id\n      name\n      description\n      date\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '6d3796e6901b37636799884379b8d785';
+(node/*: any*/).hash = '5a487827c2e452ab392381ee33515f12';
 
 module.exports = node;

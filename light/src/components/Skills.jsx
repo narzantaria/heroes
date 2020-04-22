@@ -3,9 +3,11 @@ import { Collapse } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import UpdateHeroSkillsMutation from '../mutations/UpdateHeroSkillsMutation';
 import RemoveSkillMutation from '../mutations/RemoveSkillMutation';
+import UpdateSkillMutation from '../mutations/UpdateSkillMutation';
 
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../Environment';
+import SkillForm from './SkillForm';
 
 const { Panel } = Collapse;
 
@@ -17,6 +19,7 @@ const SkillsQuery = graphql`
         id
         name
         description
+        date
       }
     }
   }
@@ -42,7 +45,7 @@ class Skills extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <br />
@@ -57,11 +60,17 @@ class Skills extends Component {
             if (error) {
               return <div>{error.message}</div>;
             } else if (props) {
-              console.log(props);
+              // console.log(props);
               return <Collapse style={{ marginBottom: '25px' }}>
                 {props.nodes.map(skill => (
                   <Panel header={skill.name} key={skill.id} extra={genExtra(this.props.heroId, skill.id)}>
-                    <p>{skill.description}</p>
+                    <SkillForm data={skill} sendbackData={(name, description, date) => {
+                      // console.log(name);
+                      UpdateSkillMutation(skill.id, name, description, date)
+                        .then(() => {
+                          window.location.reload();
+                        });
+                    }} />
                   </Panel>
                 ))}
               </Collapse>;
