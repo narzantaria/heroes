@@ -6,11 +6,15 @@ Full-stack GraphQL app based on Node, Express, React, Relay, MongoDB
 ### Hero
 ### Skill
 
-A Hero may have many skills (or nothing)
+A Hero may have many skills (or nothing). Allowed operations: create, read, update, delete. Removing Hero will remove all related skills.
 
-Allowed operations: create, read, update, delete
-
-Removing Hero will remove all related skills.
+## 📝 Features
+- [x] Create hero
+- [x] See the list of heroes
+- [x] Update hero
+- [x] Delete hero
+- [x] Add Hero skill
+- [x] Update, delete skill
 
 The server is configured with Mongodb cloud connection, so you can configure your own settings in ```.env``` file.
 
