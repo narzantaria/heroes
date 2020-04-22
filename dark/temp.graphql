@@ -117,7 +117,7 @@ mutation CreateSkillMutation($input: CreateSkillInput!) {
   }
 }
 
-# ВАЖНО ВАЖНО ВАЖНО!!! ЭТО ОБНОВЛЕНИЕ СПИСКА СКИЛЛОВ
+# ЭТО ОБНОВЛЕНИЕ СПИСКА СКИЛЛОВ
 # operation 0 добавляет, 1 - удаляет
 mutation UpdateHeroSkillsMutation($input: UpdateHeroSkillsInput!) {
   updateSkills(input: $input) {
