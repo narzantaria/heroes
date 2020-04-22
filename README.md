@@ -16,6 +16,7 @@ A Hero may have many skills (or nothing). Allowed operations: create, read, upda
 - [x] Add Hero skill
 - [x] Update, delete skill
 
+> Server is placed at *dark* folder, client - at *light*.
 The server is configured with Mongodb cloud connection, so you can configure your own settings in ```.env``` file.
 
 # Used technologies
