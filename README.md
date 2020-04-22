@@ -16,7 +16,7 @@ The server is configured with Mongodb cloud connection, so you can configure you
 
 # Used technologies
 
-<div style="width: 100%; display: flex; justify-content: space-between; flex-wrap: wrap;">
+<div>
   <img src="/light/src/img/node.png" alt="Node.js" height="100" width="100">
   <img src="/light/src/img/express.png" alt="Express.js" height="100" width="100">
   <img src="/light/src/img/graphql.png" alt="GraphQL" height="100" width="100">
