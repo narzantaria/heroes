@@ -1,11 +1,4 @@
 const { nodeDefinitions, fromGlobalId } = require('graphql-relay');
-const {
-  GraphQLObjectType,
-  GraphQLNonNull,
-  GraphQLID,
-  GraphQLList,
-  GraphQLString
-} = require('graphql');
 const heroModel = require('./models/hero');
 const skillModel = require('./models/skill');
 
@@ -26,20 +19,5 @@ const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
     return obj.Hero ? Hero : Skill;
   }
 );
-
-// const nodesField = {
-//   description: 'Fetches objects given their IDs',
-//   type: new GraphQLNonNull(new GraphQLList(nodeInterface)),
-//   args: {
-//     ids: {
-//       type: new GraphQLNonNull(
-//         new GraphQLList(new GraphQLNonNull(GraphQLID))
-//       ),
-//       description: 'The IDs of objects',
-//     },
-//   },
-//   resolve: (obj, {ids}, context, info) =>
-//     Promise.all(ids.map(id => Promise.resolve(idFetcher(id, context, info)))),
-// };
 
 module.exports = { nodeInterface, nodeField, nodesField };
