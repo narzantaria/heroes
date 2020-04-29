@@ -60,7 +60,6 @@ module.exports = {
       id,
       {
         name: args.name,
-        skills: args.skills,
         date: args.date
       },
       { new: true }

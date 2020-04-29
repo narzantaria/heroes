@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Drawer, Form, Col, Row, Input, Select, DatePicker } from 'antd';
+import { Button, Form, Col, Row, Input, DatePicker } from 'antd';
 import moment from 'moment';
 
 const dateFormat = 'DD/MM/YYYY';
 
 class SkillForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { data } = this.props;
-    // console.log(data);
     return (
       <Form
         layout="vertical"

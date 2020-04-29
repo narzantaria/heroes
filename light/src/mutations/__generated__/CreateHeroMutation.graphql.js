@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c925032962e4a2c7f11a079a979de761
+ * @relayHash 80896a36ec304cd5cff60c0f766194b8
  */
 
 /* eslint-disable */
@@ -23,7 +23,6 @@ export type CreateHeroMutationResponse = {|
     +hero: ?{|
       +id: string,
       +name: ?string,
-      +skills: ?$ReadOnlyArray<?string>,
       +date: ?string,
     |}
   |}
@@ -43,7 +42,6 @@ mutation CreateHeroMutation(
     hero {
       id
       name
-      skills
       date
     }
   }
@@ -101,13 +99,6 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "skills",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
             "name": "date",
             "args": null,
             "storageKey": null
@@ -137,12 +128,12 @@ return {
     "operationKind": "mutation",
     "name": "CreateHeroMutation",
     "id": null,
-    "text": "mutation CreateHeroMutation(\n  $input: CreateHeroInput!\n) {\n  createHero(input: $input) {\n    hero {\n      id\n      name\n      skills\n      date\n    }\n  }\n}\n",
+    "text": "mutation CreateHeroMutation(\n  $input: CreateHeroInput!\n) {\n  createHero(input: $input) {\n    hero {\n      id\n      name\n      date\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'eb00b88e1f92bbb73121aba498afce5e';
+(node/*: any*/).hash = '85290d21d954ff7033a0506c102ec98e';
 
 module.exports = node;

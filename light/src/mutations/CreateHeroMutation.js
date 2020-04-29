@@ -7,14 +7,13 @@ const mutation = graphql`
       hero{
         id
         name
-        skills
         date
       }
     }
   }
 `;
 
-export default (name, skills, date) => new Promise((resolve, reject) => {
+export default (name, date) => new Promise((resolve, reject) => {
   commitMutation(
     environment,
     {
@@ -22,7 +21,7 @@ export default (name, skills, date) => new Promise((resolve, reject) => {
       variables: {
         input: {
           name,
-          skills,
+          // skills,
           date
         }
       },

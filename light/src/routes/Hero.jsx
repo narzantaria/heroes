@@ -99,9 +99,9 @@ class Hero extends Component {
                   <h1>Hero page</h1>
                   <Line />
                   {this.state.alert ? <Alert style={{ margin: '10px 0' }} message="Data saved successfully" type="success" /> : ''}
-                  <HeroForm data={hero} sendbackData={(name, skills, date) => {
+                  <HeroForm data={hero} sendbackData={(name, date) => {
                     this.setState({ alert: true });
-                    UpdateHeroMutation(this.props.match.params.id, name, skills, date)
+                    UpdateHeroMutation(this.props.match.params.id, name, date)
                       .then(() => {
                         setTimeout(() => {
                           this.setState({ alert: false });

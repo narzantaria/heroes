@@ -8,10 +8,6 @@ import RemoveHeroMutation from '../mutations/RemoveHeroMutation';
 import RemoveSkillsMutation from '../mutations/RemoveSkillsMutation';
 
 class HeroTpl extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Fragment>
@@ -46,7 +42,7 @@ class HeroTpl extends Component {
 
 export default createFragmentContainer(
   HeroTpl, {
-  hero: graphql`
+    hero: graphql`
       fragment HeroTpl_hero on Hero {
         id
         name
@@ -54,5 +50,5 @@ export default createFragmentContainer(
         date
       }
     `
-}
+  }
 );

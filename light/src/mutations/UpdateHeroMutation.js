@@ -9,7 +9,7 @@ const mutation = graphql`
   }
 `;
 
-export default (id, name, skills, date) => new Promise((resolve, reject) => {
+export default (id, name, date) => new Promise((resolve, reject) => {
   commitMutation(
     environment,
     {
@@ -18,7 +18,7 @@ export default (id, name, skills, date) => new Promise((resolve, reject) => {
         input: {
           id,
           name,
-          skills,
+          // skills,
           date
         }
       },

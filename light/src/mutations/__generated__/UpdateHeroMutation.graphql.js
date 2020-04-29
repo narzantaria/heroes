@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f5e46662905af7f5aed0d96643d6cb02
+ * @relayHash d9422293309202081675b8182db45dc4
  */
 
 /* eslint-disable */
@@ -12,7 +12,6 @@ import type { ConcreteRequest } from 'relay-runtime';
 export type UpdateHeroInput = {|
   id: string,
   name?: ?string,
-  skills?: ?$ReadOnlyArray<?string>,
   date?: ?string,
   clientMutationId?: ?string,
 |};

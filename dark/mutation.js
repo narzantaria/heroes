@@ -29,7 +29,7 @@ const CreateHeroMutation = mutationWithClientMutationId({
     return new Promise((resolve, reject) => {
       heroModel.createHero({
         name: args.name,
-        skills: args.skills,
+        skills: [],
         date: new Date(args.date)
       })
         .then(hero => resolve({ hero }))
@@ -43,7 +43,6 @@ const UpdateHeroMutation = mutationWithClientMutationId({
   inputFields: {
     id: { type: new GraphQLNonNull(GraphQLString) },
     name: { type: GraphQLString },
-    skills: { type: new GraphQLList(GraphQLString) },
     date: { type: GraphQLString }
   },
   outputFields: {

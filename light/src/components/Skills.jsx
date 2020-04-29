@@ -40,12 +40,7 @@ const genExtra = (hero, skill) => (
 );
 
 class Skills extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    // console.log(this.props);
     return (
       <div>
         <br />
@@ -60,12 +55,10 @@ class Skills extends Component {
             if (error) {
               return <div>{error.message}</div>;
             } else if (props) {
-              // console.log(props);
               return <Collapse style={{ marginBottom: '25px' }}>
                 {props.nodes.map(skill => (
                   <Panel header={skill.name} key={skill.id} extra={genExtra(this.props.heroId, skill.id)}>
                     <SkillForm data={skill} sendbackData={(name, description, date) => {
-                      // console.log(name);
                       UpdateSkillMutation(skill.id, name, description, date)
                         .then(() => {
                           window.location.reload();

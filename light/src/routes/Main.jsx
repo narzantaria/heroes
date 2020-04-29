@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import Line from '../components/Line';
-import { Layout, Menu, Row, Col } from 'antd';
 
 const Main = () => {
   return (

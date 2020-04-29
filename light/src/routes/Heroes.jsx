@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { Button, Col, Row } from 'antd';
+import { Link } from 'react-router-dom';
+import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import Line from '../components/Line';
 
