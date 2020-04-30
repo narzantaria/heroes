@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f3a98f3a89db08f6b8fbda496188dfea
+ * @relayHash 5704dcb65913f4a8bb8f20ec40b2c0c2
  */
 
 /* eslint-disable */
@@ -10,23 +10,29 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type HeroesList_viewer$ref = any;
-export type HeroesQueryVariables = {||};
-export type HeroesQueryResponse = {|
+export type HeroesListPaginationQueryVariables = {|
+  count: number,
+  cursor?: ?string,
+|};
+export type HeroesListPaginationQueryResponse = {|
   +viewer: {|
     +$fragmentRefs: HeroesList_viewer$ref
   |}
 |};
-export type HeroesQuery = {|
-  variables: HeroesQueryVariables,
-  response: HeroesQueryResponse,
+export type HeroesListPaginationQuery = {|
+  variables: HeroesListPaginationQueryVariables,
+  response: HeroesListPaginationQueryResponse,
 |};
 */
 
 
 /*
-query HeroesQuery {
+query HeroesListPaginationQuery(
+  $count: Int!
+  $cursor: String
+) {
   viewer {
-    ...HeroesList_viewer
+    ...HeroesList_viewer_1G22uz
     id
   }
 }
@@ -38,8 +44,8 @@ fragment HeroTpl_hero on Hero {
   date
 }
 
-fragment HeroesList_viewer on Viewer {
-  Heroes(first: 5) {
+fragment HeroesList_viewer_1G22uz on Viewer {
+  Heroes(first: $count, after: $cursor) {
     edges {
       node {
         id
@@ -59,12 +65,31 @@ fragment HeroesList_viewer on Viewer {
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
-    "kind": "Literal",
-    "name": "first",
-    "value": 5
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "cursor",
+    "type": "String",
+    "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "count"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -75,10 +100,10 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "HeroesQuery",
+    "name": "HeroesListPaginationQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -92,7 +117,18 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "HeroesList_viewer",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "count",
+                "variableName": "count"
+              },
+              {
+                "kind": "Variable",
+                "name": "cursor",
+                "variableName": "cursor"
+              }
+            ]
           }
         ]
       }
@@ -100,8 +136,8 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "HeroesQuery",
-    "argumentDefinitions": [],
+    "name": "HeroesListPaginationQuery",
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -116,8 +152,8 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "Heroes",
-            "storageKey": "Heroes(first:5)",
-            "args": (v0/*: any*/),
+            "storageKey": null,
+            "args": (v1/*: any*/),
             "concreteType": "HeroConnection",
             "plural": false,
             "selections": [
@@ -139,7 +175,7 @@ return {
                     "concreteType": "Hero",
                     "plural": false,
                     "selections": [
-                      (v1/*: any*/),
+                      (v2/*: any*/),
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -210,26 +246,26 @@ return {
             "kind": "LinkedHandle",
             "alias": null,
             "name": "Heroes",
-            "args": (v0/*: any*/),
+            "args": (v1/*: any*/),
             "handle": "connection",
             "key": "HeroesList_Heroes",
             "filters": null
           },
-          (v1/*: any*/)
+          (v2/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "HeroesQuery",
+    "name": "HeroesListPaginationQuery",
     "id": null,
-    "text": "query HeroesQuery {\n  viewer {\n    ...HeroesList_viewer\n    id\n  }\n}\n\nfragment HeroTpl_hero on Hero {\n  id\n  name\n  skills\n  date\n}\n\nfragment HeroesList_viewer on Viewer {\n  Heroes(first: 5) {\n    edges {\n      node {\n        id\n        ...HeroTpl_hero\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
+    "text": "query HeroesListPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...HeroesList_viewer_1G22uz\n    id\n  }\n}\n\nfragment HeroTpl_hero on Hero {\n  id\n  name\n  skills\n  date\n}\n\nfragment HeroesList_viewer_1G22uz on Viewer {\n  Heroes(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...HeroTpl_hero\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '3ccf8675952832a7bc1f9b05fb5f369f';
+(node/*: any*/).hash = '7953e971c73f6e0b598e95f1990c8cc5';
 
 module.exports = node;

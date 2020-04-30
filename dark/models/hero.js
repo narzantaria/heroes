@@ -22,7 +22,7 @@ var heroModel = mongoose.model("Hero", heroSchema);
 
 module.exports = {
   getHeroes: () => {
-    return heroModel.find({}).limit(10).sort({ _id: -1 })
+    return heroModel.find({}).limit(100).sort({ _id: -1 })
       .then(heroes => {
         return heroes.map(hero => {
           return {
