@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash d9422293309202081675b8182db45dc4
  */
 
 /* eslint-disable */
@@ -43,18 +42,15 @@ mutation UpdateHeroMutation(
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "input",
-    "type": "UpdateHeroInput!",
-    "defaultValue": null
+    "type": "UpdateHeroInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "updateHero",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -63,40 +59,43 @@ v1 = [
       }
     ],
     "concreteType": "UpdateHeroPayload",
+    "kind": "LinkedField",
+    "name": "updateHero",
     "plural": false,
     "selections": [
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "updatedId",
         "args": null,
+        "kind": "ScalarField",
+        "name": "updatedId",
         "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "UpdateHeroMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "UpdateHeroMutation",
+    "selections": (v1/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "UpdateHeroMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "UpdateHeroMutation",
     "id": null,
-    "text": "mutation UpdateHeroMutation(\n  $input: UpdateHeroInput!\n) {\n  updateHero(input: $input) {\n    updatedId\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "UpdateHeroMutation",
+    "operationKind": "mutation",
+    "text": "mutation UpdateHeroMutation(\n  $input: UpdateHeroInput!\n) {\n  updateHero(input: $input) {\n    updatedId\n  }\n}\n"
   }
 };
 })();

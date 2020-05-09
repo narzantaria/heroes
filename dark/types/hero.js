@@ -1,10 +1,9 @@
 const {
-  GraphQLList,
   GraphQLObjectType,
   GraphQLString
 } = require('graphql');
 
-const { connectionArgs, connectionDefinitions, connectionFromArray, connectionFromPromisedArray, globalIdField } = require('graphql-relay');
+const { connectionArgs, connectionDefinitions, connectionFromArray, globalIdField } = require('graphql-relay');
 const { nodeInterface } = require('../nodes');
 const { SkillConnection } = require('./skill');
 const skillModel = require('../models/skill');

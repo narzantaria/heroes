@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash 5791d1c4cc1a0bb8dffe58808dcf08cc
  */
 
 /* eslint-disable */
@@ -43,18 +42,15 @@ mutation RemoveHeroMutation(
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "input",
-    "type": "RemoveHeroInput!",
-    "defaultValue": null
+    "type": "RemoveHeroInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "removeHero",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -63,47 +59,50 @@ v1 = [
       }
     ],
     "concreteType": "RemoveHeroPayload",
+    "kind": "LinkedField",
+    "name": "removeHero",
     "plural": false,
     "selections": [
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "deletedId",
         "args": null,
+        "kind": "ScalarField",
+        "name": "deletedId",
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "deleted",
         "args": null,
+        "kind": "ScalarField",
+        "name": "deleted",
         "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "RemoveHeroMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "RemoveHeroMutation",
+    "selections": (v1/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "RemoveHeroMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "RemoveHeroMutation",
     "id": null,
-    "text": "mutation RemoveHeroMutation(\n  $input: RemoveHeroInput!\n) {\n  removeHero(input: $input) {\n    deletedId\n    deleted\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "RemoveHeroMutation",
+    "operationKind": "mutation",
+    "text": "mutation RemoveHeroMutation(\n  $input: RemoveHeroInput!\n) {\n  removeHero(input: $input) {\n    deletedId\n    deleted\n  }\n}\n"
   }
 };
 })();

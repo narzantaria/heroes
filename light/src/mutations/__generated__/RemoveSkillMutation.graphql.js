@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash 343a9f4172702e0372ed358dd268804d
  */
 
 /* eslint-disable */
@@ -44,18 +43,15 @@ mutation RemoveSkillMutation(
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "input",
-    "type": "RemoveSkillInput!",
-    "defaultValue": null
+    "type": "RemoveSkillInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "removeSkill",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -64,47 +60,50 @@ v1 = [
       }
     ],
     "concreteType": "RemoveSkillPayload",
+    "kind": "LinkedField",
+    "name": "removeSkill",
     "plural": false,
     "selections": [
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "deletedId",
         "args": null,
+        "kind": "ScalarField",
+        "name": "deletedId",
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "deleted",
         "args": null,
+        "kind": "ScalarField",
+        "name": "deleted",
         "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "RemoveSkillMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "RemoveSkillMutation",
+    "selections": (v1/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "RemoveSkillMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "RemoveSkillMutation",
     "id": null,
-    "text": "mutation RemoveSkillMutation(\n  $input: RemoveSkillInput!\n) {\n  removeSkill(input: $input) {\n    deletedId\n    deleted\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "RemoveSkillMutation",
+    "operationKind": "mutation",
+    "text": "mutation RemoveSkillMutation(\n  $input: RemoveSkillInput!\n) {\n  removeSkill(input: $input) {\n    deletedId\n    deleted\n  }\n}\n"
   }
 };
 })();

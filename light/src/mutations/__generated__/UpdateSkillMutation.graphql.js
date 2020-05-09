@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash d0a84351d485f9df36318790ce8f8c17
  */
 
 /* eslint-disable */
@@ -44,18 +43,15 @@ mutation UpdateSkillMutation(
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "input",
-    "type": "UpdateSkillInput!",
-    "defaultValue": null
+    "type": "UpdateSkillInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "updateSkill",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -64,40 +60,43 @@ v1 = [
       }
     ],
     "concreteType": "UpdateSkillPayload",
+    "kind": "LinkedField",
+    "name": "updateSkill",
     "plural": false,
     "selections": [
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "updatedId",
         "args": null,
+        "kind": "ScalarField",
+        "name": "updatedId",
         "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "UpdateSkillMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "UpdateSkillMutation",
+    "selections": (v1/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "UpdateSkillMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "UpdateSkillMutation",
     "id": null,
-    "text": "mutation UpdateSkillMutation(\n  $input: UpdateSkillInput!\n) {\n  updateSkill(input: $input) {\n    updatedId\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "UpdateSkillMutation",
+    "operationKind": "mutation",
+    "text": "mutation UpdateSkillMutation(\n  $input: UpdateSkillInput!\n) {\n  updateSkill(input: $input) {\n    updatedId\n  }\n}\n"
   }
 };
 })();

@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash 3bb4e49d47890f64c3a73f02c847076b
  */
 
 /* eslint-disable */
@@ -54,18 +53,15 @@ mutation CreateSkillMutation(
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "input",
-    "type": "CreateSkillInput!",
-    "defaultValue": null
+    "type": "CreateSkillInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "createSkill",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -74,72 +70,75 @@ v1 = [
       }
     ],
     "concreteType": "CreateSkillPayload",
+    "kind": "LinkedField",
+    "name": "createSkill",
     "plural": false,
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": null,
-        "name": "skill",
-        "storageKey": null,
         "args": null,
         "concreteType": "Skill",
+        "kind": "LinkedField",
+        "name": "skill",
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
             "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "id",
-            "args": null,
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
             "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "name",
-            "args": null,
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
             "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "description",
-            "args": null,
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
             "alias": null,
-            "name": "date",
             "args": null,
+            "kind": "ScalarField",
+            "name": "date",
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "CreateSkillMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "CreateSkillMutation",
+    "selections": (v1/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "CreateSkillMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "CreateSkillMutation",
     "id": null,
-    "text": "mutation CreateSkillMutation(\n  $input: CreateSkillInput!\n) {\n  createSkill(input: $input) {\n    skill {\n      id\n      name\n      description\n      date\n    }\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "CreateSkillMutation",
+    "operationKind": "mutation",
+    "text": "mutation CreateSkillMutation(\n  $input: CreateSkillInput!\n) {\n  createSkill(input: $input) {\n    skill {\n      id\n      name\n      description\n      date\n    }\n  }\n}\n"
   }
 };
 })();

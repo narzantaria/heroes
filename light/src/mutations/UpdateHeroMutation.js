@@ -18,7 +18,6 @@ export default (id, name, date) => new Promise((resolve, reject) => {
         input: {
           id,
           name,
-          // skills,
           date
         }
       },

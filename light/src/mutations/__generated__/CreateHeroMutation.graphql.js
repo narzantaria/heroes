@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash 1233bb827b273223ef713df20d4e9189
  */
 
 /* eslint-disable */
@@ -46,18 +45,15 @@ mutation CreateHeroMutation(
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "input",
-    "type": "CreateHeroInput!",
-    "defaultValue": null
+    "type": "CreateHeroInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "createHero",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -66,51 +62,54 @@ v1 = [
       }
     ],
     "concreteType": "CreateHeroPayload",
+    "kind": "LinkedField",
+    "name": "createHero",
     "plural": false,
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": null,
-        "name": "hero",
-        "storageKey": null,
         "args": null,
         "concreteType": "Hero",
+        "kind": "LinkedField",
+        "name": "hero",
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
             "alias": null,
-            "name": "id",
             "args": null,
+            "kind": "ScalarField",
+            "name": "id",
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "CreateHeroMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "CreateHeroMutation",
+    "selections": (v1/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "CreateHeroMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "CreateHeroMutation",
     "id": null,
-    "text": "mutation CreateHeroMutation(\n  $input: CreateHeroInput!\n) {\n  createHero(input: $input) {\n    hero {\n      id\n    }\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "CreateHeroMutation",
+    "operationKind": "mutation",
+    "text": "mutation CreateHeroMutation(\n  $input: CreateHeroInput!\n) {\n  createHero(input: $input) {\n    hero {\n      id\n    }\n  }\n}\n"
   }
 };
 })();

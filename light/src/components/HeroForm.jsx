@@ -7,7 +7,6 @@ const dateFormat = 'DD/MM/YYYY';
 class HeroForm extends Component {
   constructor(props) {
     super(props);
-    //
   }
   
   render() {

@@ -19,7 +19,6 @@ export default (name, date) => new Promise((resolve, reject) => {
       variables: {
         input: {
           name,
-          // skills,
           date
         }
       },

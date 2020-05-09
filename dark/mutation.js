@@ -1,5 +1,4 @@
-const {
-  GraphQLList,
+const {  
   GraphQLObjectType,
   GraphQLNonNull,
   GraphQLString,
@@ -17,7 +16,6 @@ const CreateHeroMutation = mutationWithClientMutationId({
   name: "CreateHero",
   inputFields: {
     name: { type: new GraphQLNonNull(GraphQLString) },
-    // skills: { type: new GraphQLList(GraphQLString) },
     date: { type: new GraphQLNonNull(GraphQLString) }
   },
   outputFields: {
@@ -43,7 +41,6 @@ const UpdateHeroMutation = mutationWithClientMutationId({
   inputFields: {
     id: { type: new GraphQLNonNull(GraphQLString) },
     name: { type: GraphQLString },
-    // skill: { type: GraphQLString },
     date: { type: GraphQLString }
   },
   outputFields: {
@@ -97,7 +94,6 @@ const CreateSkillMutation = mutationWithClientMutationId({
     }
   },
   mutateAndGetPayload: args => {
-    console.log(args);
     const { id: convertedHeroId } = fromGlobalId(args.heroId);
     return new Promise((resolve, reject) => {
       skillModel.createSkill({

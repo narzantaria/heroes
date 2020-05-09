@@ -27,34 +27,34 @@ export type HeroTpl_hero$key = {
 
 
 const node/*: ReaderFragment*/ = {
-  "kind": "Fragment",
-  "name": "HeroTpl_hero",
-  "type": "Hero",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "HeroTpl_hero",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "id",
-      "args": null,
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
       "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "name",
-      "args": null,
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "date",
       "args": null,
+      "kind": "ScalarField",
+      "name": "date",
       "storageKey": null
     }
-  ]
+  ],
+  "type": "Hero"
 };
 // prettier-ignore
 (node/*: any*/).hash = '729819cfd078b59bf98c222a701c417f';

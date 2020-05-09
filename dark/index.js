@@ -28,12 +28,9 @@ app.use(
   })
 );
 
-// app.get('/', async (req, res) => {
-//   try {
-//     res.sendFile(path.join(__dirname + '/build/index.html'));
-//   } catch (err) {
-//     res.json({ message: err });
-//   }
+//This is for open production client, should be stored in 'build' folder:
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/build/index.html'));
 // });
 
 mongoose.connect(
