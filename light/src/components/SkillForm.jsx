@@ -5,6 +5,10 @@ import moment from 'moment';
 const dateFormat = 'DD/MM/YYYY';
 
 class SkillForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
     const { data } = this.props;
     return (

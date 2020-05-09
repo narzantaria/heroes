@@ -14,7 +14,6 @@ declare export opaque type HeroTpl_hero$fragmentType: HeroTpl_hero$ref;
 export type HeroTpl_hero = {|
   +id: string,
   +name: ?string,
-  +skills: ?$ReadOnlyArray<?string>,
   +date: ?string,
   +$refType: HeroTpl_hero$ref,
 |};
@@ -51,13 +50,6 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "skills",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "date",
       "args": null,
       "storageKey": null
@@ -65,6 +57,6 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '5222254687cda3d984154d19f012c3c0';
+(node/*: any*/).hash = '729819cfd078b59bf98c222a701c417f';
 
 module.exports = node;

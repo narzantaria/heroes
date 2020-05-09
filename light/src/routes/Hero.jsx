@@ -7,7 +7,6 @@ import HeroForm from '../components/HeroForm';
 import SkillForm from '../components/SkillForm';
 import UpdateHeroMutation from '../mutations/UpdateHeroMutation';
 import CreateSkillMutation from '../mutations/CreateSkillMutation';
-import UpdateHeroSkillsMutation from '../mutations/UpdateHeroSkillsMutation';
 
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../Environment';
@@ -19,7 +18,13 @@ const HeroQuery = graphql`
       Hero(id: $id) {
         id
         name
-        skills
+        skills {
+          edges {
+            node {
+              id
+            }
+          }
+        }
         date
       }
     }
@@ -58,7 +63,6 @@ class Hero extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Fragment>
         {this.state.spin ? <Spinner /> : ''}
@@ -71,15 +75,12 @@ class Hero extends Component {
         >
           <SkillForm sendbackData={(name, description, date) => {
             this.setState({ spin: true });
-            CreateSkillMutation(name, description, date)
-              .then(arg => {
-                UpdateHeroSkillsMutation(this.props.match.params.id, "0", arg)
-                  .then(() => {
-                    setTimeout(() => {
-                      this.setState({ spin: false, visible: false });
-                      window.location.reload();
-                    }, 1000);
-                  });
+            CreateSkillMutation(this.props.match.params.id, name, description, date)
+              .then(() => {
+                setTimeout(() => {
+                  this.setState({ spin: false, visible: false });
+                  window.location.reload();
+                }, 1000);
               });
           }} />
         </Drawer>
@@ -108,13 +109,13 @@ class Hero extends Component {
                         }, 2000);
                       });
                   }} />
-                  {hero.skills.length > 0 ? <Skills heroId={this.props.match.params.id} skills={hero.skills} /> : <hr style={{ margin: '20px 0' }} />}
+                  {hero.skills.edges.length > 0 ? <Skills heroId={this.props.match.params.id} skills={hero.skills} /> : <hr style={{ margin: '20px 0' }} />}
                 </Fragment>
               );
             }
             return <div>Ожидание...</div>
           }}
-        />        
+        />
         <Button type="primary" onClick={this.showDrawer}>
           <PlusOutlined /> New skill
         </Button>

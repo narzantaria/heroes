@@ -5,6 +5,7 @@ const mutation = graphql`
   mutation RemoveHeroMutation($input: RemoveHeroInput!) {
     removeHero(input: $input) {
       deletedId
+      deleted
     }
   }
 `;

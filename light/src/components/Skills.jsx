@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Collapse } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import UpdateHeroSkillsMutation from '../mutations/UpdateHeroSkillsMutation';
 import RemoveSkillMutation from '../mutations/RemoveSkillMutation';
 import UpdateSkillMutation from '../mutations/UpdateSkillMutation';
 
@@ -27,20 +26,24 @@ const SkillsQuery = graphql`
 
 const genExtra = (hero, skill) => (
   <CloseCircleOutlined
-    onClick={event => {
-      event.stopPropagation();
-      UpdateHeroSkillsMutation(hero, "1", skill)
-        .then(() => {
-          RemoveSkillMutation(skill).then(() => {
-            window.location.reload();
-          });
-        });
+    style={{ color: '#92000A' }}
+    onClick={e => {
+      e.stopPropagation();
+      RemoveSkillMutation(hero, skill).then(() => {
+        window.location.reload();
+      });
     }}
   />
 );
 
 class Skills extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+  }
+
   render() {
+    const skills = this.props.skills.edges.map(skill => skill.node.id);
     return (
       <div>
         <br />
@@ -49,7 +52,7 @@ class Skills extends Component {
           environment={environment}
           query={SkillsQuery}
           variables={{
-            input: this.props.skills,
+            input: skills,
           }}
           render={({ error, props }) => {
             if (error) {

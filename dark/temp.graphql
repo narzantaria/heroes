@@ -1,24 +1,8 @@
-query {
-  viewer {
-     Heroes{
-      edges {
-        node {
-          id
-          name
-          skills
-          date
-        }
-      }
-    }
-  }
-}
-
 mutation CreateHeroMutation($input: CreateHeroInput!) {
   createHero(input: $input) {
      hero{
       id
       name
-      skills
       date
     }
   }
@@ -27,12 +11,53 @@ mutation CreateHeroMutation($input: CreateHeroInput!) {
 {
   "input": {
     "name": "Sandro",
-    "skills": [
-      "5e6b83e87ddb3319a0dd4c6e",
-      "5e6b83e97ddb3319a0dd4c72"
-    ],
     "date": "2019-10-04T21:00:00.000Z"
   }
+}
+
+query HeroesQuery {
+  viewer {
+    Heroes {
+      edges {
+        node {
+          id
+          name
+          skills {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+          date
+        }
+      }
+    }
+  }
+}
+
+query HeroQuery($id: ID!) {
+  viewer {
+    Hero(id: $id) {
+      id
+      name
+      skills {
+        edges {
+          node {
+            id
+            name
+            description
+            date
+          }
+        }
+      }
+      date
+    }
+  }
+}
+
+{
+  "id": "SGVybzo1ZWI0MjIxMTEzY2UyNDZlNTEwODhkMjA="
 }
 
 mutation UpdateHeroMutation($input: UpdateHeroInput!) {
@@ -43,58 +68,22 @@ mutation UpdateHeroMutation($input: UpdateHeroInput!) {
 
 {
   "input": {
-    "id": "SGVybzo1ZTlkM2IwOTViMzc1YzE1MTg1OWNhNzI=",
+    "id": "SGVybzo1ZWIzYzNkZTQ0ZWVlNTQ1MWViZDcxODk=",
     "name": "Finneas Vilmar",
-    "skills": [],
     "date": "2019-10-04T21:00:00.000Z"
   }
-}
-
-query HeroQuery($id: ID!) {
-  viewer {
-    Hero(id: $id) {
-      id
-      name
-      skills
-      date
-    }
-  }
-}
-
-{
-  "id": "SGVybzo1ZTlkNDJhMDViMzc1YzE1MTg1OWNhNzM="
 }
 
 mutation RemoveHeroMutation($input: RemoveHeroInput!) {
   removeHero(input: $input) {
     deletedId
+    deleted
   }
 }
 
-query HeroQuery($id: ID!) {
-  viewer {
-    Hero(id: $id) {
-      id
-      name
-      skills
-      date
-    }
-  }
-}
-
-# #######################################################
-query {
-  viewer {
-    Skills {
-      edges {
-        node {
-          id
-          name
-          description
-          date
-        }
-      }
-    }
+{
+  "input": {
+    "id": "SGVybzo1ZWI0MjFlYjEzY2UyNDZlNTEwODhkMWM="
   }
 }
 
@@ -111,32 +100,31 @@ mutation CreateSkillMutation($input: CreateSkillInput!) {
 
 {
   "input": {
-    "name": "khkhkjhkj",
-    "description": "hghgfdhgfdhgfdhg",
+    "heroId": "SGVybzo1ZWI0MjIxMTEzY2UyNDZlNTEwODhkMjA=",
+    "name": "dfgddddfdf",
+    "description": "basic",
     "date": "2019-10-04T21:00:00.000Z"
   }
 }
 
-# ЭТО ОБНОВЛЕНИЕ СПИСКА СКИЛЛОВ
-# operation 0 добавляет, 1 - удаляет
-mutation UpdateHeroSkillsMutation($input: UpdateHeroSkillsInput!) {
-  updateSkills(input: $input) {
-    updatedId
-  }
-}
-
-{
-  "input": {
-    "id": "SGVybzo1ZTlmNGU5NTY1YmY2NDZlZGM2MDllZTY=",
-    "operation": "0",
-    "skill": "U2tpbGw6NWU5ZjRlYTE2NWJmNjQ2ZWRjNjA5ZWU3"
-  }
-}
-
-# =======================================================
-query SkillQuery($id: ID!) {
+query SkillsQuery {
   viewer {
-    Skill(id: $id) {
+    Skills {
+      edges {
+        node {
+          id
+          name
+          description
+          date
+        }
+      }
+    }
+  }
+}
+
+query SkillQuery ($id: ID!) {
+  viewer {
+    Skill (id: $id) {
       id
       name
       description
@@ -146,33 +134,34 @@ query SkillQuery($id: ID!) {
 }
 
 {
-  "id": "U2tpbGw6NWU5ZGQyYTBmMjA5NDgxNWFjM2YzNTFh"
+  "id": "U2tpbGw6NWViNDIyMjAxM2NlMjQ2ZTUxMDg4ZDI0"
+}
+
+mutation UpdateSkillMutation($input: UpdateSkillInput!) {
+  updateSkill(input: $input) {
+    updatedId
+  }
+}
+
+{
+  "input": {
+    "id": "U2tpbGw6NWViNDIyMjAxM2NlMjQ2ZTUxMDg4ZDI0",
+    "name": "Necro",
+    "description": "ljljlkjlkj",
+    "date": "2019-10-04T21:00:00.000Z"
+  }
 }
 
 mutation RemoveSkillMutation($input: RemoveSkillInput!) {
   removeSkill(input: $input) {
     deletedId
+    deleted
   }
 }
 
 {
   "input": {
-    "id": "U2tpbGw6NWU5ZmZiMjIzNTY3MzEwZDg0ODFmNzM3"
-  }
-}
-
-# =======================================================
-mutation RemoveSkillsMutation($input: RemoveSkillsMutationInput!) {
-  removeSkills(input: $input) {
-    deletedIDs
-  }
-}
-
-{
-  "input": {
-    "ids": [
-      "U2tpbGw6NWU5ZjRlYTE2NWJmNjQ2ZWRjNjA5ZWU3",
-      "U2tpbGw6NWU5ZmZiMTAzNTY3MzEwZDg0ODFmNzM2"
-    ]
+    "heroId": "SGVybzo1ZWI0MjIxMTEzY2UyNDZlNTEwODhkMjA=",
+    "id": "U2tpbGw6NWViNDIyMTgxM2NlMjQ2ZTUxMDg4ZDIx"
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import { Button } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import HeroTpl from './HeroTpl';

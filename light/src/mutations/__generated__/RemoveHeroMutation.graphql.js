@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash edec3aca804808b34d5d0371c735b85c
+ * @relayHash 5791d1c4cc1a0bb8dffe58808dcf08cc
  */
 
 /* eslint-disable */
@@ -18,7 +18,8 @@ export type RemoveHeroMutationVariables = {|
 |};
 export type RemoveHeroMutationResponse = {|
   +removeHero: ?{|
-    +deletedId: ?string
+    +deletedId: ?string,
+    +deleted: ?boolean,
   |}
 |};
 export type RemoveHeroMutation = {|
@@ -34,6 +35,7 @@ mutation RemoveHeroMutation(
 ) {
   removeHero(input: $input) {
     deletedId
+    deleted
   }
 }
 */
@@ -69,6 +71,13 @@ v1 = [
         "name": "deletedId",
         "args": null,
         "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "deleted",
+        "args": null,
+        "storageKey": null
       }
     ]
   }
@@ -93,12 +102,12 @@ return {
     "operationKind": "mutation",
     "name": "RemoveHeroMutation",
     "id": null,
-    "text": "mutation RemoveHeroMutation(\n  $input: RemoveHeroInput!\n) {\n  removeHero(input: $input) {\n    deletedId\n  }\n}\n",
+    "text": "mutation RemoveHeroMutation(\n  $input: RemoveHeroInput!\n) {\n  removeHero(input: $input) {\n    deletedId\n    deleted\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'e06624179d2eed7838f6c50c947df577';
+(node/*: any*/).hash = 'ade30e1e069b70be57f1e8c5c350978a';
 
 module.exports = node;

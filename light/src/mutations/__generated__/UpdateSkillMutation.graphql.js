@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a5388bfa61f9ca772406533e8aced29e
+ * @relayHash d0a84351d485f9df36318790ce8f8c17
  */
 
 /* eslint-disable */
@@ -11,9 +11,9 @@
 import type { ConcreteRequest } from 'relay-runtime';
 export type UpdateSkillInput = {|
   id: string,
-  name: string,
-  description: string,
-  date: string,
+  name?: ?string,
+  description?: ?string,
+  date?: ?string,
   clientMutationId?: ?string,
 |};
 export type UpdateSkillMutationVariables = {|

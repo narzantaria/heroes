@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ce37b5d700b9719dfd21224182e9b794
+ * @relayHash 3bb4e49d47890f64c3a73f02c847076b
  */
 
 /* eslint-disable */
@@ -10,6 +10,7 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 export type CreateSkillInput = {|
+  heroId: string,
   name: string,
   description: string,
   date: string,

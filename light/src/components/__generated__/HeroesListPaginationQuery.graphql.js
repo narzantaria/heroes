@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5704dcb65913f4a8bb8f20ec40b2c0c2
+ * @relayHash c55054c96f46ee3f02169c9430aa6d50
  */
 
 /* eslint-disable */
@@ -40,7 +40,6 @@ query HeroesListPaginationQuery(
 fragment HeroTpl_hero on Hero {
   id
   name
-  skills
   date
 }
 
@@ -186,13 +185,6 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "skills",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
                         "name": "date",
                         "args": null,
                         "storageKey": null
@@ -260,7 +252,7 @@ return {
     "operationKind": "query",
     "name": "HeroesListPaginationQuery",
     "id": null,
-    "text": "query HeroesListPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...HeroesList_viewer_1G22uz\n    id\n  }\n}\n\nfragment HeroTpl_hero on Hero {\n  id\n  name\n  skills\n  date\n}\n\nfragment HeroesList_viewer_1G22uz on Viewer {\n  Heroes(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...HeroTpl_hero\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
+    "text": "query HeroesListPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...HeroesList_viewer_1G22uz\n    id\n  }\n}\n\nfragment HeroTpl_hero on Hero {\n  id\n  name\n  date\n}\n\nfragment HeroesList_viewer_1G22uz on Viewer {\n  Heroes(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...HeroTpl_hero\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

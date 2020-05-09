@@ -6,8 +6,6 @@ const mutation = graphql`
     createHero(input: $input) {
       hero{
         id
-        name
-        date
       }
     }
   }

@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
+// const path = require('path');
 require('dotenv/config');
 const graphQLHTTP = require('express-graphql');
 const { GraphQLSchema } = require('graphql');
@@ -37,16 +37,14 @@ app.use(
 // });
 
 mongoose.connect(
-  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-vuauc.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
+  "mongodb://localhost/heroes", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+}
 ).then(() => {
-  console.log(`Connection to database ${process.env.MONGO_DB} established...`)
-  app.listen(process.env.APP_PORT, () => {
-    console.log(`Server started at port ${process.env.APP_PORT}`);
-  });
+  console.log('Connection to database established...')
+  app.listen(5000);
 }).catch(err => {
   console.log(err);
 });

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 80896a36ec304cd5cff60c0f766194b8
+ * @relayHash 1233bb827b273223ef713df20d4e9189
  */
 
 /* eslint-disable */
@@ -11,7 +11,6 @@
 import type { ConcreteRequest } from 'relay-runtime';
 export type CreateHeroInput = {|
   name: string,
-  skills?: ?$ReadOnlyArray<?string>,
   date: string,
   clientMutationId?: ?string,
 |};
@@ -21,9 +20,7 @@ export type CreateHeroMutationVariables = {|
 export type CreateHeroMutationResponse = {|
   +createHero: ?{|
     +hero: ?{|
-      +id: string,
-      +name: ?string,
-      +date: ?string,
+      +id: string
     |}
   |}
 |};
@@ -41,8 +38,6 @@ mutation CreateHeroMutation(
   createHero(input: $input) {
     hero {
       id
-      name
-      date
     }
   }
 }
@@ -88,20 +83,6 @@ v1 = [
             "name": "id",
             "args": null,
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "date",
-            "args": null,
-            "storageKey": null
           }
         ]
       }
@@ -128,12 +109,12 @@ return {
     "operationKind": "mutation",
     "name": "CreateHeroMutation",
     "id": null,
-    "text": "mutation CreateHeroMutation(\n  $input: CreateHeroInput!\n) {\n  createHero(input: $input) {\n    hero {\n      id\n      name\n      date\n    }\n  }\n}\n",
+    "text": "mutation CreateHeroMutation(\n  $input: CreateHeroInput!\n) {\n  createHero(input: $input) {\n    hero {\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '85290d21d954ff7033a0506c102ec98e';
+(node/*: any*/).hash = '21f44f82fb3e1d6a42c4895ba3054235';
 
 module.exports = node;

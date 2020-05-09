@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bcc6e8c22afa6a5ba04ced6513574a49
+ * @relayHash 5f32d103f4849276891384c6f4ba075c
  */
 
 /* eslint-disable */
@@ -17,7 +17,13 @@ export type HeroQueryResponse = {|
     +Hero: ?{|
       +id: string,
       +name: ?string,
-      +skills: ?$ReadOnlyArray<?string>,
+      +skills: ?{|
+        +edges: ?$ReadOnlyArray<?{|
+          +node: ?{|
+            +id: string
+          |}
+        |}>
+      |},
       +date: ?string,
     |}
   |}
@@ -37,7 +43,13 @@ query HeroQuery(
     Hero(id: $id) {
       id
       name
-      skills
+      skills {
+        edges {
+          node {
+            id
+          }
+        }
+      }
       date
     }
     id
@@ -85,11 +97,38 @@ v2 = {
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
       "name": "skills",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "SkillConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "SkillEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Skill",
+              "plural": false,
+              "selections": [
+                (v1/*: any*/)
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "ScalarField",
@@ -147,12 +186,12 @@ return {
     "operationKind": "query",
     "name": "HeroQuery",
     "id": null,
-    "text": "query HeroQuery(\n  $id: ID!\n) {\n  viewer {\n    Hero(id: $id) {\n      id\n      name\n      skills\n      date\n    }\n    id\n  }\n}\n",
+    "text": "query HeroQuery(\n  $id: ID!\n) {\n  viewer {\n    Hero(id: $id) {\n      id\n      name\n      skills {\n        edges {\n          node {\n            id\n          }\n        }\n      }\n      date\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '44e769d7e090f5fbfb14f262f222759c';
+(node/*: any*/).hash = 'b51ddadc1bf6c87f634adfe38eb31b47';
 
 module.exports = node;

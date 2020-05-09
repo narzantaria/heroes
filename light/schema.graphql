@@ -1,6 +1,5 @@
 input CreateHeroInput {
   name: String!
-  skills: [String]
   date: String!
   clientMutationId: String
 }
@@ -11,6 +10,7 @@ type CreateHeroPayload {
 }
 
 input CreateSkillInput {
+  heroId: String!
   name: String!
   description: String!
   date: String!
@@ -31,7 +31,7 @@ type Hero implements Node {
   name: String
 
   """Skills of Hero"""
-  skills: [String]
+  skills(after: String, first: Int, before: String, last: Int): SkillConnection
 
   """Hero date of birth"""
   date: String
@@ -63,8 +63,6 @@ type Mutation {
   createSkill(input: CreateSkillInput!): CreateSkillPayload
   updateSkill(input: UpdateSkillInput!): UpdateSkillPayload
   removeSkill(input: RemoveSkillInput!): RemoveSkillPayload
-  updateSkills(input: UpdateHeroSkillsInput!): UpdateHeroSkillsPayload
-  removeSkills(input: RemoveSkillsMutationInput!): RemoveSkillsMutationPayload
 }
 
 """An object with an ID"""
@@ -118,6 +116,7 @@ type RemoveHeroPayload {
 }
 
 input RemoveSkillInput {
+  heroId: String!
   id: String!
   clientMutationId: String
 }
@@ -125,16 +124,6 @@ input RemoveSkillInput {
 type RemoveSkillPayload {
   deleted: Boolean
   deletedId: String
-  clientMutationId: String
-}
-
-input RemoveSkillsMutationInput {
-  ids: [String]
-  clientMutationId: String
-}
-
-type RemoveSkillsMutationPayload {
-  deletedIDs: [String]
   clientMutationId: String
 }
 
@@ -184,24 +173,11 @@ type UpdateHeroPayload {
   clientMutationId: String
 }
 
-input UpdateHeroSkillsInput {
-  id: String!
-  operation: String!
-  skill: String!
-  clientMutationId: String
-}
-
-type UpdateHeroSkillsPayload {
-  updated: Boolean
-  updatedId: String
-  clientMutationId: String
-}
-
 input UpdateSkillInput {
   id: String!
-  name: String!
-  description: String!
-  date: String!
+  name: String
+  description: String
+  date: String
   clientMutationId: String
 }
 

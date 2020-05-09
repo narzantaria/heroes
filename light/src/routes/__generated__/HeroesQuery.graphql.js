@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f3a98f3a89db08f6b8fbda496188dfea
+ * @relayHash e8800b14eb7332da58fd73bb1b783c6c
  */
 
 /* eslint-disable */
@@ -34,7 +34,6 @@ query HeroesQuery {
 fragment HeroTpl_hero on Hero {
   id
   name
-  skills
   date
 }
 
@@ -150,13 +149,6 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "skills",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
                         "name": "date",
                         "args": null,
                         "storageKey": null
@@ -224,7 +216,7 @@ return {
     "operationKind": "query",
     "name": "HeroesQuery",
     "id": null,
-    "text": "query HeroesQuery {\n  viewer {\n    ...HeroesList_viewer\n    id\n  }\n}\n\nfragment HeroTpl_hero on Hero {\n  id\n  name\n  skills\n  date\n}\n\nfragment HeroesList_viewer on Viewer {\n  Heroes(first: 5) {\n    edges {\n      node {\n        id\n        ...HeroTpl_hero\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
+    "text": "query HeroesQuery {\n  viewer {\n    ...HeroesList_viewer\n    id\n  }\n}\n\nfragment HeroTpl_hero on Hero {\n  id\n  name\n  date\n}\n\nfragment HeroesList_viewer on Viewer {\n  Heroes(first: 5) {\n    edges {\n      node {\n        id\n        ...HeroTpl_hero\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -5,17 +5,19 @@ const mutation = graphql`
   mutation RemoveSkillMutation($input: RemoveSkillInput!) {
     removeSkill(input: $input) {
       deletedId
+      deleted
     }
   }
 `;
 
-export default (id) => new Promise((resolve, reject) => {
+export default (heroId, id) => new Promise((resolve, reject) => {
   commitMutation(
     environment,
     {
       mutation,
       variables: {
         input: {
+          heroId,
           id
         }
       },

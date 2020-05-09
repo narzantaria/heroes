@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9229058971e092db5e556127fb6b9745
+ * @relayHash 343a9f4172702e0372ed358dd268804d
  */
 
 /* eslint-disable */
@@ -10,6 +10,7 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 export type RemoveSkillInput = {|
+  heroId: string,
   id: string,
   clientMutationId?: ?string,
 |};
@@ -18,7 +19,8 @@ export type RemoveSkillMutationVariables = {|
 |};
 export type RemoveSkillMutationResponse = {|
   +removeSkill: ?{|
-    +deletedId: ?string
+    +deletedId: ?string,
+    +deleted: ?boolean,
   |}
 |};
 export type RemoveSkillMutation = {|
@@ -34,6 +36,7 @@ mutation RemoveSkillMutation(
 ) {
   removeSkill(input: $input) {
     deletedId
+    deleted
   }
 }
 */
@@ -69,6 +72,13 @@ v1 = [
         "name": "deletedId",
         "args": null,
         "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "deleted",
+        "args": null,
+        "storageKey": null
       }
     ]
   }
@@ -93,12 +103,12 @@ return {
     "operationKind": "mutation",
     "name": "RemoveSkillMutation",
     "id": null,
-    "text": "mutation RemoveSkillMutation(\n  $input: RemoveSkillInput!\n) {\n  removeSkill(input: $input) {\n    deletedId\n  }\n}\n",
+    "text": "mutation RemoveSkillMutation(\n  $input: RemoveSkillInput!\n) {\n  removeSkill(input: $input) {\n    deletedId\n    deleted\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '9425c000b3ee96729eabea90226758de';
+(node/*: any*/).hash = 'a0aa9e2a0748ae007b41967bf4488b73';
 
 module.exports = node;

@@ -5,7 +5,6 @@ import { createFragmentContainer, graphql } from 'react-relay';
 import { DeleteOutlined } from '@ant-design/icons';
 
 import RemoveHeroMutation from '../mutations/RemoveHeroMutation';
-import RemoveSkillsMutation from '../mutations/RemoveSkillsMutation';
 
 class HeroTpl extends Component {
   render() {
@@ -24,12 +23,9 @@ class HeroTpl extends Component {
               onClick={() => {
                 this.props.callUp(true);
                 RemoveHeroMutation(this.props.hero.id)
-                  .then(() => {
-                    RemoveSkillsMutation(this.props.hero.skills)
-                      .then(() => {
-                        this.props.callUp(false);
-                        window.location.reload();
-                      });
+                  .then(res => {
+                    this.props.callUp(false);
+                    window.location.reload();
                   });
               }}
             />
@@ -42,13 +38,12 @@ class HeroTpl extends Component {
 
 export default createFragmentContainer(
   HeroTpl, {
-    hero: graphql`
+  hero: graphql`
       fragment HeroTpl_hero on Hero {
         id
         name
-        skills
         date
       }
     `
-  }
+}
 );

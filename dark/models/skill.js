@@ -4,14 +4,8 @@ mongoose.set('useFindAndModify', false);
 const Schema = mongoose.Schema;
 
 const skillSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
+  name: String,
+  description: String,
   date: {
     type: Date,
     default: Date.now
@@ -22,7 +16,7 @@ var skillModel = mongoose.model("Skill", skillSchema);
 
 module.exports = {
   getSkills: () => {
-    return skillModel.find({}).limit(10).sort({ _id: -1 })
+    return skillModel.find({}).limit(100).sort({ _id: -1 })
       .then(skills => {
         return skills.map(skill => {
           return {
@@ -55,9 +49,10 @@ module.exports = {
   removeSkill: id => {
     return skillModel.findByIdAndRemove(id);
   },
-  removeSkills: args => {
-    return skillModel.remove({ '_id': { $in: args } });
-  },
+  //You can also delete at the schema level (see mutation.js):
+  // removeSkills: args => {
+  //   return skillModel.remove({ '_id': { $in: args } });
+  // },
   updateSkill: (id, args) => {
     return skillModel.findByIdAndUpdate(
       id,

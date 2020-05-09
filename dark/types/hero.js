@@ -4,8 +4,10 @@ const {
   GraphQLString
 } = require('graphql');
 
-const { globalIdField, connectionDefinitions } = require('graphql-relay');
+const { connectionArgs, connectionDefinitions, connectionFromArray, connectionFromPromisedArray, globalIdField } = require('graphql-relay');
 const { nodeInterface } = require('../nodes');
+const { SkillConnection } = require('./skill');
+const skillModel = require('../models/skill');
 
 const Hero = new GraphQLObjectType({
   name: "Hero",
@@ -18,8 +20,10 @@ const Hero = new GraphQLObjectType({
       description: "Hero Name"
     },
     skills: {
-      type: new GraphQLList(GraphQLString),
-      description: "Skills of Hero"
+      type: SkillConnection,
+      args: connectionArgs,
+      description: "Skills of Hero",
+      resolve: (_, args) => connectionFromArray(_.skills.map(skill => skillModel.getSkill(skill)), args)
     },
     date: {
       type: GraphQLString,
