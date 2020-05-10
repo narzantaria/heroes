@@ -34,7 +34,7 @@ class Heroes extends Component {
             } else if (props) {
               return <HeroesList viewer={props.viewer} />;
             }
-            return <div>Загрузка данных...</div>
+            return <div>Loadind...</div>
           }}
         />      
       </Fragment>

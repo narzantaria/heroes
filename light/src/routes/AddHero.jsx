@@ -13,7 +13,7 @@ class AddHero extends Component {
           CreateHeroMutation(name, date)
             .then(arg => {
               console.log(arg);
-              this.props.history.push("/heroes/" + arg, { params: 'Shutruk-Nahhunte!!!' });
+              this.props.history.push("/heroes/" + arg, { params: '_' });
             });
         }} />
       </div>
