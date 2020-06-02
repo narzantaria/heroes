@@ -19,7 +19,10 @@ export type HeroQueryResponse = {|
       +skills: ?{|
         +edges: ?$ReadOnlyArray<?{|
           +node: ?{|
-            +id: string
+            +id: string,
+            +name: ?string,
+            +description: ?string,
+            +date: ?string,
           |}
         |}>
       |},
@@ -46,6 +49,9 @@ query HeroQuery(
         edges {
           node {
             id
+            name
+            description
+            date
           }
         }
       }
@@ -74,6 +80,20 @@ v1 = {
 },
 v2 = {
   "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+},
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "date",
+  "storageKey": null
+},
+v4 = {
+  "alias": null,
   "args": [
     {
       "kind": "Variable",
@@ -87,13 +107,7 @@ v2 = {
   "plural": false,
   "selections": [
     (v1/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "name",
-      "storageKey": null
-    },
+    (v2/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -118,7 +132,16 @@ v2 = {
               "name": "node",
               "plural": false,
               "selections": [
-                (v1/*: any*/)
+                (v1/*: any*/),
+                (v2/*: any*/),
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "description",
+                  "storageKey": null
+                },
+                (v3/*: any*/)
               ],
               "storageKey": null
             }
@@ -128,13 +151,7 @@ v2 = {
       ],
       "storageKey": null
     },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "date",
-      "storageKey": null
-    }
+    (v3/*: any*/)
   ],
   "storageKey": null
 };
@@ -153,7 +170,7 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
-          (v2/*: any*/)
+          (v4/*: any*/)
         ],
         "storageKey": null
       }
@@ -174,7 +191,7 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
+          (v4/*: any*/),
           (v1/*: any*/)
         ],
         "storageKey": null
@@ -186,11 +203,11 @@ return {
     "metadata": {},
     "name": "HeroQuery",
     "operationKind": "query",
-    "text": "query HeroQuery(\n  $id: ID!\n) {\n  viewer {\n    Hero(id: $id) {\n      id\n      name\n      skills {\n        edges {\n          node {\n            id\n          }\n        }\n      }\n      date\n    }\n    id\n  }\n}\n"
+    "text": "query HeroQuery(\n  $id: ID!\n) {\n  viewer {\n    Hero(id: $id) {\n      id\n      name\n      skills {\n        edges {\n          node {\n            id\n            name\n            description\n            date\n          }\n        }\n      }\n      date\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'b51ddadc1bf6c87f634adfe38eb31b47';
+(node/*: any*/).hash = '5d9497dbcfe1f4f356a6b60683eedbb7';
 
 module.exports = node;

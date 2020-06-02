@@ -23,7 +23,7 @@ class HeroTpl extends Component {
               onClick={() => {
                 this.props.callUp(true);
                 RemoveHeroMutation(this.props.hero.id)
-                  .then(res => {
+                  .then(_ => {
                     this.props.callUp(false);
                     window.location.reload();
                   });
@@ -38,12 +38,12 @@ class HeroTpl extends Component {
 
 export default createFragmentContainer(
   HeroTpl, {
-  hero: graphql`
+    hero: graphql`
       fragment HeroTpl_hero on Hero {
         id
         name
         date
       }
     `
-}
+  }
 );

@@ -27,6 +27,12 @@ export default (heroId, name, description, date) => new Promise((resolve, reject
           date
         }
       },
+      // updater: (store) => {
+      //   const hero = store.get(heroId);        
+      //   const heroSkills = hero.getLinkedRecord('skills');
+      //   hero.setValue(name, 'name');
+      //   const heroName = hero.getValue('name');
+      // },
       onCompleted: (res, err) => {
         if (err) return reject(err);
         return resolve(res.createSkill.skill.id);

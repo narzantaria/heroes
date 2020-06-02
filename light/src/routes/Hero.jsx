@@ -22,6 +22,9 @@ const HeroQuery = graphql`
           edges {
             node {
               id
+              name
+              description
+              date
             }
           }
         }

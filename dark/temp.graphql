@@ -122,6 +122,27 @@ query SkillsQuery {
   }
 }
 
+# query skills by array of ids
+query SkillsQuery($input: [ID!]!) {
+  nodes(ids: $input) {
+    id
+    ... on Skill {
+      id
+      name
+      description
+      date
+    }
+  }
+}
+
+{
+  "input": [
+    "U2tpbGw6NWVkNjFiZmQ1M2Q4NzcyNmU2NmNjYzY3",
+    "U2tpbGw6NWVkNjFiZWU1M2Q4NzcyNmU2NmNjYzY2",
+    "U2tpbGw6NWVkNjE5OWM1M2Q4NzcyNmU2NmNjYzY1"
+  ]
+}
+
 query SkillQuery ($id: ID!) {
   viewer {
     Skill (id: $id) {
