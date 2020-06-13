@@ -1,51 +1,79 @@
-import React, { Component } from 'react';
-import { Collapse } from 'antd';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Alert, Collapse } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import RemoveSkillMutation from '../mutations/RemoveSkillMutation';
 import UpdateSkillMutation from '../mutations/UpdateSkillMutation';
-
 import SkillForm from './SkillForm';
+import moment from 'moment';
 
+const dateFormat = 'DD/MM/YYYY';
 const { Panel } = Collapse;
 
-const genExtra = (hero, skill) => (
-  <CloseCircleOutlined
-    style={{ color: '#92000A' }}
-    onClick={e => {
-      e.stopPropagation();
-      RemoveSkillMutation(hero, skill).then(() => {
-        window.location.reload();
-      });
-    }}
-  />
-);
+function Skills(props) {
+  const [skills, setSkills] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [alert, setAlert] = useState(false);
 
-class Skills extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-  }
+  const handleRemove = (hero, skill, index) => (
+    <CloseCircleOutlined
+      style={{ color: '#92000A' }}
+      onClick={e => {
+        e.stopPropagation();
+        RemoveSkillMutation(hero, skill).then(() => {
+          e.stopPropagation();
+          let skillsProxy = Object.assign([], skills);
+          skillsProxy.splice(index, 1);
+          setSkills(skillsProxy);
+          RemoveSkillMutation(hero, skill);
+        });
+      }}
+    />
+  );
 
-  render() {
-    return (
-      <div>
-        <br />
-        <h1>Skills</h1>
-        <Collapse style={{ marginBottom: '25px' }}>
-          {this.props.skills.edges.map(skill => (
-            <Panel header={skill.node.name} key={skill.node.id} extra={genExtra(this.props.heroId, skill.node.id)}>
-              <SkillForm data={skill.node} sendbackData={(name, description, date) => {
-                UpdateSkillMutation(skill.id, name, description, date)
-                  .then(() => {
-                    window.location.reload();
-                  });
-              }} />
-            </Panel>
-          ))}
-        </Collapse>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (props.skills && !loaded) {
+      setSkills(props.skills.edges);
+      setLoaded(true);
+    }
+  });
+
+  return (
+    <Fragment>
+      {alert ? <Alert style={{ margin: '10px 0' }} message="Data saved successfully" type="success" /> : ''}
+      <br />
+      <h1>Skills</h1>
+      <Collapse accordion style={{ marginBottom: '25px' }}>
+        {skills.length && skills.map((skill, index) => (
+          <Panel
+            header={skill.node.name}
+            key={skill.node.name}
+            extra={handleRemove(props.heroId, skill.node.id, index)}
+          >
+            <SkillForm data={skill.node} sendbackData={(name, description, date) => {              
+              let skillsProxy = Object.assign([], skills);
+              skillsProxy[index] = Object.assign({}, {
+                node: {
+                  id: skill.node.id,
+                  name: name,
+                  description: description,
+                  date: date
+                }
+              });
+              setSkills(skillsProxy);
+              setAlert(true);
+              UpdateSkillMutation(skill.node.id, name, description, date)
+                .then(() => {
+                  setTimeout(() => {
+                    setAlert(false);
+                  }, 2000);
+                });
+            }} />
+          </Panel>
+        ))}
+      </Collapse>
+    </Fragment>
+  )
 }
 
 export default Skills;
+

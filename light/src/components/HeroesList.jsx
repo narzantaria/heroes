@@ -23,7 +23,6 @@ class HeroesList extends Component {
     );
   }
   render() {
-    console.log(this.props);
     return (
       <div style={{ padding: '10px 0' }}>
         {this.state.spin ? <Spinner /> : ''}
