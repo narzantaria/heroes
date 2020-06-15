@@ -1,12 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Alert, Button, Drawer } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Alert } from 'antd';
 import Line from '../components/Line';
-import Spinner from '../components/Spinner';
 import HeroForm from '../components/HeroForm';
-import SkillForm from '../components/SkillForm';
 import UpdateHeroMutation from '../mutations/UpdateHeroMutation';
-import CreateSkillMutation from '../mutations/CreateSkillMutation';
 
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../Environment';
@@ -38,23 +34,9 @@ class Hero extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      alert: false,
-      spin: false,
-      visible: false
+      alert: false
     }
   }
-
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
-  };
 
   componentDidMount() {
     if (this.props.location.state) {
@@ -68,25 +50,6 @@ class Hero extends Component {
   render() {
     return (
       <Fragment>
-        {this.state.spin ? <Spinner /> : ''}
-        <Drawer
-          title="Create a new account"
-          width={720}
-          onClose={this.onClose}
-          visible={this.state.visible}
-          bodyStyle={{ paddingBottom: 80 }}
-        >
-          <SkillForm sendbackData={(name, description, date) => {
-            this.setState({ spin: true });
-            CreateSkillMutation(this.props.match.params.id, name, description, date)
-              .then(() => {
-                setTimeout(() => {
-                  this.setState({ spin: false, visible: false });
-                  window.location.reload();
-                }, 1000);
-              });
-          }} />
-        </Drawer>
         <QueryRenderer
           environment={environment}
           query={HeroQuery}
@@ -112,16 +75,13 @@ class Hero extends Component {
                         }, 2000);
                       });
                   }} />
-                  {hero.skills.edges.length > 0 ? <Skills heroId={this.props.match.params.id} skills={hero.skills} /> : <hr style={{ margin: '20px 0' }} />}
+                  <Skills heroId={this.props.match.params.id} skills={hero.skills} />
                 </Fragment>
               );
             }
             return <div>Ожидание...</div>
           }}
         />
-        <Button type="primary" onClick={this.showDrawer}>
-          <PlusOutlined /> New skill
-        </Button>
       </Fragment>
     );
   }

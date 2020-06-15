@@ -1,18 +1,18 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Alert, Collapse } from 'antd';
-import { CloseCircleOutlined } from '@ant-design/icons';
-import RemoveSkillMutation from '../mutations/RemoveSkillMutation';
+import { Alert, Collapse, Button, Drawer } from 'antd';
+import { CloseCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import CreateSkillMutation from '../mutations/CreateSkillMutation';
 import UpdateSkillMutation from '../mutations/UpdateSkillMutation';
+import RemoveSkillMutation from '../mutations/RemoveSkillMutation';
 import SkillForm from './SkillForm';
-import moment from 'moment';
 
-const dateFormat = 'DD/MM/YYYY';
 const { Panel } = Collapse;
 
 function Skills(props) {
   const [skills, setSkills] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [alert, setAlert] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const handleRemove = (hero, skill, index) => (
     <CloseCircleOutlined
@@ -49,7 +49,7 @@ function Skills(props) {
             key={skill.node.name}
             extra={handleRemove(props.heroId, skill.node.id, index)}
           >
-            <SkillForm data={skill.node} sendbackData={(name, description, date) => {              
+            <SkillForm data={skill.node} sendbackData={(name, description, date) => {
               let skillsProxy = Object.assign([], skills);
               skillsProxy[index] = Object.assign({}, {
                 node: {
@@ -71,6 +71,27 @@ function Skills(props) {
           </Panel>
         ))}
       </Collapse>
+      <Button type="primary" onClick={() => setVisible(true)}>
+        <PlusOutlined /> New skill
+        </Button>
+      <Drawer
+        title="Create a new account"
+        width={720}
+        onClose={() => setVisible(false)}
+        visible={visible}
+        bodyStyle={{ paddingBottom: 80 }}
+      >
+        <SkillForm sendbackData={(name, description, date) => {
+          CreateSkillMutation(props.heroId, name, description, date)
+            .then(res => {
+              setSkills([...skills, { node: {
+                ...res,
+                date: new Date(parseInt(res.date))
+              } }]);
+              setVisible(false);
+            });
+        }} />
+      </Drawer>
     </Fragment>
   )
 }
