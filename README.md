@@ -1,5 +1,14 @@
 # heroes
-Full-stack GraphQL app based on Node, Express, React, Relay, MongoDB
+This is a full-stack GraphQL app based on Node, Express, React, Relay, MongoDB. The application demonstrates the basics of GraphQL and Relay both server and client side, such as: 
+[Object Identification](https://github.com/graphql/graphql-relay-js#object-identification), 
+[Connections](https://github.com/graphql/graphql-relay-js#connections),
+[GraphQL Server Specification](https://relay.dev/docs/en/graphql-server-specification), 
+[Relay Environment](https://relay.dev/docs/en/relay-environment), 
+[QueryRenderer](https://relay.dev/docs/en/query-renderer), 
+[Mutations](https://relay.dev/docs/en/mutations), 
+[Fragments](https://graphql.org/learn/queries/#fragments), 
+[Pagination Container](https://relay.dev/docs/en/pagination-container),
+and more.
 
 ## We have two models:
 

@@ -20,11 +20,9 @@ function Skills(props) {
       onClick={e => {
         e.stopPropagation();
         RemoveSkillMutation(hero, skill).then(() => {
-          e.stopPropagation();
           let skillsProxy = Object.assign([], skills);
           skillsProxy.splice(index, 1);
           setSkills(skillsProxy);
-          RemoveSkillMutation(hero, skill);
         });
       }}
     />
