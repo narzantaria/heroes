@@ -11,29 +11,30 @@ class HeroesList extends Component {
     super(props);
     this.state = { spin: false };
   }
-  _loadMore() {
+  _loadMore(arg) {
     if (!this.props.relay.hasMore() || this.props.relay.isLoading()) {
       return;
     }
     this.props.relay.loadMore(
-      5,
+      arg,
       error => {
         console.log(error);
       },
     );
   }
   render() {
+    const edges = this.props.viewer.Heroes.edges.filter(edge => edge.node);
     return (
       <div style={{ padding: '10px 0' }}>
         {this.state.spin ? <Spinner /> : ''}
-        {this.props.viewer.Heroes.edges.map(edge => (
+        {edges.map(edge => (
           <HeroTpl hero={edge.node} key={edge.node.id}
-            callUp={arg => {
-              this.setState({ spin: arg });
+            callUp={_ => {
+              this._loadMore(1);
             }}
           />
         ))}
-        <Button onClick={() => this._loadMore()}>
+        <Button onClick={() => this._loadMore(5)}>
           <RightOutlined />
         </Button>
         <br/>

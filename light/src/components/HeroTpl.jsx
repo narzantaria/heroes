@@ -21,11 +21,9 @@ class HeroTpl extends Component {
             <DeleteOutlined
               className="delete"
               onClick={() => {
-                this.props.callUp(true);
                 RemoveHeroMutation(this.props.hero.id)
                   .then(_ => {
-                    this.props.callUp(false);
-                    window.location.reload();
+                    this.props.callUp();
                   });
               }}
             />

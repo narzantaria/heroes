@@ -20,6 +20,9 @@ export default (id) => new Promise((resolve, reject) => {
           id
         }
       },
+      updater: (store) => {
+        store.delete(id);
+      },
       onCompleted: (res, err) => {
         if (err) return reject(err);
         return resolve("Removed");
